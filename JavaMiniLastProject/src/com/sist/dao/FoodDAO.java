@@ -13,59 +13,50 @@ public class FoodDAO {
 	   private Connection conn;
 	   private PreparedStatement ps;
 	   //                                         211.238.142.22
-	   private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	   private final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
 	   private static FoodDAO dao;
-	   private final int ROWSIZE=12;
+	   private final int ROWSIZE = 12;
 	   // 드라이버 등록 
-	   public FoodDAO()
-	   {
-		   try
-		   {
+	   public FoodDAO(){
+		   try{
 			   Class.forName("oracle.jdbc.driver.OracleDriver");
 		   }catch(Exception ex) {}
 	   }
-	   public static FoodDAO newInstance()
-	   {
-		   if(dao==null)
-			   dao=new FoodDAO();
+	   public static FoodDAO newInstance(){
+		   if(dao == null)
+			   dao = new FoodDAO();
 		   return dao;
 	   }
 	   // 연결 
-	   public void getConnection()
-	   {
-		   try
-		   {
+	   public void getConnection(){
+		   try{
 			   // 1조 => hr_1 , 2조 => hr_2 , 3조 => hr_3 
-			   conn=DriverManager.getConnection(URL,"hr","happy");
+			   conn = DriverManager.getConnection(URL,"hr","happy");
 		   }catch(Exception ex) {}
 	   }
 	   // 해제 
-	   public void disConnection()
-	   {
-		   try
-		   {
-			   if(ps!=null) ps.close();
-			   if(conn!=null) conn.close();
+	   public void disConnection(){
+		   try{
+			   if(ps != null) ps.close();
+			   if(conn != null) conn.close();
 		   }catch(Exception ex) {}
 	   }
 	   // = 목록 
-	   public List<FoodVO> foodListData(int page)
-	   {
+	   public List<FoodVO> foodListData(int page){
 		   // 페이징 처리 => 인라인뷰 
-		   List<FoodVO> list=
+		   List<FoodVO> list =
 				   new ArrayList<FoodVO>();
-		   try
-		   {
+		   try{
 			   // 인덱스 자동화 : PRIMARY KEY , UNIQUE 
 			   getConnection();
-			   String sql="SELECT fno,name,poster,num "
+			   String sql ="SELECT fno,name,poster,num "
 					     +"FROM (SELECT fno,name,poster,rownum as num "
 					     +"FROM (SELECT /*+ INDEX_ASC(menupan_food meunf_fno_pk)*/fno,name,poster "
 					     +"FROM menupan_food)) "
 					     +"WHERE num BETWEEN ? AND ?";
-			   ps=conn.prepareStatement(sql); // 오라클로 전송 
-			   int start=(page*ROWSIZE)-(ROWSIZE-1);
-			   int end=page*ROWSIZE;
+			   ps = conn.prepareStatement(sql); // 오라클로 전송 
+			   int start = (page*ROWSIZE)-(ROWSIZE-1);
+			   int end = page*ROWSIZE;
 			   /*
 			    *     1page => 1~12 => rownum은 1번부터 시작 
 			    *     2page => 13~24 
@@ -73,69 +64,59 @@ public class FoodDAO {
 			   ps.setInt(1, start);
 			   ps.setInt(2, end);
 			   // 오라클 실행 
-			   ResultSet rs=ps.executeQuery();
+			   ResultSet rs = ps.executeQuery();
 			   // 결과값이 rs안에 존재 => List에 채운다 
-			   while(rs.next())  // 출력한 첫번째 위치에 커서이동 
-			   {
+			   while(rs.next()) {  // 출력한 첫번째 위치에 커서이동 
+			   
 				   // JDBC => 읽기 => ROW단위로 읽어 온다
                    // fno , name, poster읽기 
 				   // => 한번에 저장 => VO
-				   FoodVO vo=new FoodVO();
+				   FoodVO vo = new FoodVO();
 				   vo.setFno(rs.getInt(1));
 				   vo.setName(rs.getString(2));
 				   vo.setPoster(rs.getString(3));
 				   list.add(vo);
 			   }
 			   rs.close();
-		   }catch(Exception ex)
-		   {
+		   }catch(Exception ex){
 			   ex.printStackTrace();
-		   }
-		   finally
-		   {
+		   }finally{
 			   disConnection();
 		   }
 		   return list;
 	   }
 	   // 1-1 총페이지
-	   public int foodTotalPage()
-	   {
-		   int total=0;
-		   try
-		   {
+	   public int foodTotalPage(){
+		   int total = 0;
+		   try{
 			   getConnection();
-			   String sql="SELECT CEIL(COUNT(*)/"+ROWSIZE+") FROM menupan_food";
-			   ps=conn.prepareStatement(sql);
-			   ResultSet rs=ps.executeQuery();
+			   String sql ="SELECT CEIL(COUNT(*)/"+ROWSIZE+") FROM menupan_food";
+			   ps = conn.prepareStatement(sql);
+			   ResultSet rs = ps.executeQuery();
 			   rs.next();
-			   total=rs.getInt(1);
+			   total = rs.getInt(1);
 			   rs.close();
-		   }catch(Exception ex)
-		   {
+		   }catch(Exception ex){
 			   ex.printStackTrace();
-		   }
-		   finally
+		   }finally
 		   {
 			   disConnection();
 		   }
 		   return total;
 	   }
 	   // => 인기 많은 맛집 10개 추출 
-	   public List<FoodVO> foodTop10()
-	   {
-		   List<FoodVO> list=new ArrayList<FoodVO>();
-		   try
-		   {
+	   public List<FoodVO> foodTop10(){
+		   List<FoodVO> list = new ArrayList<FoodVO>();
+		   try{
 			   getConnection();
-			   String sql="SELECT fno,name,SUBSTR(address,1,2),poster,rownum "
+			   String sql ="SELECT fno,name,SUBSTR(address,1,2),poster,rownum "
 					     +"FROM (SELECT fno,name,address,poster "
 					     +"FROM menupan_food ORDER BY hit DESC) "
-					     +"WHERE rownum<=10";
-			   ps=conn.prepareStatement(sql);
-			   ResultSet rs=ps.executeQuery();
-			   while(rs.next())
-			   {
-				   FoodVO vo=new FoodVO();
+					     +"WHERE rownum <= 10";
+			   ps = conn.prepareStatement(sql);
+			   ResultSet rs = ps.executeQuery();
+			   while(rs.next()){
+				   FoodVO vo = new FoodVO();
 				   vo.setFno(rs.getInt(1));
 				   vo.setName(rs.getString(2));
 				   vo.setAddress(rs.getString(3));
@@ -143,12 +124,9 @@ public class FoodDAO {
 				   list.add(vo);
 			   }
 			   rs.close();
-		   }catch(Exception ex)
-		   {
+		   }catch(Exception ex){
 			   ex.printStackTrace();
-		   }
-		   finally
-		   {
+		   }finally{
 			   disConnection();
 		   }
 		   return list;

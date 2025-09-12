@@ -7,15 +7,14 @@ public class Login extends JFrame{
     JTextField tf;
     JPasswordField pf;
     JButton b1,b2,b3;
-    public Login()
-    {
-    	la1=new JLabel("ID",JLabel.CENTER);
-    	la2=new JLabel("PW",JLabel.CENTER);
-    	tf=new JTextField();
-    	pf=new JPasswordField();
-    	b1=new JButton("로그인");
-    	b2=new JButton("회원가입");
-    	b3=new JButton("취소");
+    public Login(){
+    	la1 = new JLabel("ID",JLabel.CENTER);
+    	la2 = new JLabel("PW",JLabel.CENTER);
+    	tf = new JTextField();
+    	pf = new JPasswordField();
+    	b1 = new JButton("로그인");
+    	b2 = new JButton("회원가입");
+    	b3 = new JButton("취소");
     	
     	// 배치 
     	setLayout(null);
@@ -25,7 +24,7 @@ public class Login extends JFrame{
     	la2.setBounds(10, 50, 80, 30);
     	pf.setBounds(95, 50, 200, 30);
     	
-    	JPanel p=new JPanel();
+    	JPanel p = new JPanel();
     	p.add(b1);p.add(b2);p.add(b3);
     	p.setBounds(10, 90, 285, 35);
     	
