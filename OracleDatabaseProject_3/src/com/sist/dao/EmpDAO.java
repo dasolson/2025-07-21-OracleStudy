@@ -22,12 +22,12 @@ public class EmpDAO {
     	PreparedStatement ps = null;
     	try {
     		conn = db.getConnection();
-    		String sql="SELECT empno, ename, job, hiredate, sal "
+    		String sql = "SELECT empno, ename, job, hiredate, sal "
     				+ "FROM emp";
     		ps = conn.prepareStatement(sql);
-    		ResultSet rs= ps.executeQuery();
+    		ResultSet rs = ps.executeQuery();
     		while(rs.next()) {
-    			EmpVO vo =new EmpVO();
+    			EmpVO vo = new EmpVO();
     			vo.setEmpno(rs.getInt(1));
     			vo.setEname(rs.getString(2));
     			vo.setJob(rs.getString(3));
