@@ -27,8 +27,8 @@ public class BoardDAO {
      *    --------- 메모리가 커지면서 역할을 잘 못한다 : 프로그램 종료시 회수
      */
     public static BoardDAO newInstance() {
-    	if(dao==null)
-    		dao=new BoardDAO();
+    	if(dao == null)
+    		dao = new BoardDAO();
     	return dao;
     }
     // 반복 제거 => 연결 / 해제 
@@ -36,14 +36,14 @@ public class BoardDAO {
     // 반복 코딩 / 재사용 / 다른 클래스와 통신 / 단락 나누기
     public void getConnection() {
     	try {
-    		conn=DriverManager.getConnection(URL, "hr","happy");
+    		conn = DriverManager.getConnection(URL, "hr","happy");
     	}catch(Exception ex) {}
     }
     public void disConnection() {
     	try {
-    		if(ps!=null) ps.close();
+    		if(ps != null) ps.close();
     		// OutputStream / bufferedRedder
-    		if(conn!=null) conn.close();
+    		if(conn != null) conn.close();
     		// conn => socket
     	}catch(Exception ex) {}
     }
@@ -51,7 +51,7 @@ public class BoardDAO {
     // 기능
     // 1. 목록 출력 : SELECT => 페이징
     public List<BoardVO> boardListData(int page){
-    	List<BoardVO> list=
+    	List<BoardVO> list =
     			new ArrayList<BoardVO>();
     	try {
     		// 1. 연결
@@ -63,15 +63,15 @@ public class BoardDAO {
     				  +"FROM board ORDER BY no DESC)) "
     				  +"WHERE num BETWEEN ? AND ?";
     		// 3. 오라클로 SQL 문장 전송
-    		ps=conn.prepareStatement(sql);
+    		ps = conn.prepareStatement(sql);
     		// 4. ? 값 채우기
     		
-    		int start=(rowSize*page)-(rowSize-1); // 1부터, 11, 21
-    		int and=rowSize*page; // 10까지, 20, 30
+    		int start = (rowSize*page)-(rowSize-1); // 1부터, 11, 21
+    		int and = rowSize*page; // 10까지, 20, 30
     		ps.setInt(1, start);
     		ps.setInt(2, and);
     		// 5. 경과값을 읽어온다
-    		ResultSet rs=ps.executeQuery();
+    		ResultSet rs = ps.executeQuery();
     		/*
     		 *     페이징
     		 *       이전 / 다음 => 데이터가 작은 경우
@@ -104,9 +104,9 @@ public class BoardDAO {
     	int count = 0;
     	try {
     		getConnection();
-    		String sql="SELECT COUNT(*) FROM board";
-    		ps=conn.prepareStatement(sql);
-    		ResultSet rs=ps.executeQuery();
+    		String sql = "SELECT COUNT(*) FROM board";
+    		ps = conn.prepareStatement(sql);
+    		ResultSet rs = ps.executeQuery();
     		rs.next();
     		count=rs.getInt(1);
     		rs.close();
