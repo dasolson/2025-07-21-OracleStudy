@@ -45,13 +45,13 @@ public class EmpDAO {
 	// 6. 싱글턴 구현
 	public static EmpDAO newInstance() {
 		if(dao == null)
-			dao=new EmpDAO();
+			dao = new EmpDAO();
 		return dao;
 	}
 	// 7. 오라클 연결
 	public void getConnection() {
 		try {
-			conn=DriverManager.getConnection(URL, "hr","happy");
+			conn = DriverManager.getConnection(URL, "hr","happy");
 		}catch(Exception ex) {}
 	}
 	// 8. 오라클 연결 종료
@@ -64,20 +64,20 @@ public class EmpDAO {
 	// 9. 기능
 	// 9-1. 목록 => 프로젝션 List
 	public List<EmpVO> empListData(){
-		List<EmpVO> list=new ArrayList<EmpVO>();
+		List<EmpVO> list = new ArrayList<EmpVO>();
 		try {
 			// 1. 연결
 			getConnection();
 			// 2. 오라클에 어떤 문장을 전송 할지
-			String sql="SELECT empno, ename, job, TO_CHAR(hiredate, 'YYYY-MM-DD'), sal "
+			String sql = "SELECT empno, ename, job, TO_CHAR(hiredate, 'YYYY-MM-DD'), sal "
 					+ "FROM emp "
 					+ "ORDER BY sal DESC";
 			// 3. 오라클로 전송
-			ps=conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			// 4. 실행후에 결과값을 메모리에 저장 요청
-			ResultSet rs=ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			while(rs.next()) { // 첫째줄부터 데이터를 읽어라
-				EmpVO vo=new EmpVO();
+				EmpVO vo = new EmpVO();
 				vo.setEmpno(rs.getInt(1));
 				vo.setEname(rs.getString(2));
 				vo.setJob(rs.getString(3));
@@ -91,23 +91,22 @@ public class EmpDAO {
 		}catch(Exception ex) {
 			// 에러 확인
 			ex.printStackTrace();
-		}
-		finally {
+		}finally {
 			disConnection(); // 오라클 닫기
 		}
 		return list;
 	}
 	// 9-2. 상세보기 => 셀렉션 VO
 	public EmpVO empDetailData(int empno) {
-		EmpVO vo=new EmpVO();
+		EmpVO vo = new EmpVO();
 		try {
 			getConnection();
-			String sql="SELECT empno, ename, job, mgr, hiredate,"
+			String sql = "SELECT empno, ename, job, mgr, hiredate,"
 					+"       sal, comm, deptno "
 					+"FROM emp "
-					+"WHERE empno=" +empno;
+					+"WHERE empno =" +empno;
 			ps.getConnection().prepareStatement(sql);
-			ResultSet rs=ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			rs.next();
 			vo.setEmpno(rs.getInt(1));
 			vo.setEname(rs.getString(2));
@@ -130,22 +129,22 @@ public class EmpDAO {
 	// 9-3. 검색 => LIKE List
 	
 		public List<EmpVO> empFindData(String ename){
-			List<EmpVO> list=new ArrayList<EmpVO>();
+			List<EmpVO> list = new ArrayList<EmpVO>();
 			try {
 				// 1. 연결
 				getConnection();
 				// 2. 오라클에 어떤 문장을 전송 할지
 				// 오라클은 데이터가 대소문자 구분 => EMP에 모든 데이터가 대문자
-				String sql="SELECT empno, ename, job, TO_CHAR(hiredate, 'YYYY-MM-DD'), sal "
+				String sql = "SELECT empno, ename, job, TO_CHAR(hiredate, 'YYYY-MM-DD'), sal "
 						+ "FROM emp "
 						+ "WHERE ename LIKE '%"+ename.toUpperCase()+"%' "
 						+ "ORDER BY sal DESC";
 				// 3. 오라클로 전송
-				ps=conn.prepareStatement(sql);
+				ps = conn.prepareStatement(sql);
 				// 4. 실행후에 결과값을 메모리에 저장 요청
-				ResultSet rs=ps.executeQuery();
+				ResultSet rs = ps.executeQuery();
 				while(rs.next()) { // 첫째줄부터 데이터를 읽어라
-					EmpVO vo=new EmpVO();
+					EmpVO vo = new EmpVO();
 					vo.setEmpno(rs.getInt(1));
 					vo.setEname(rs.getString(2));
 					vo.setJob(rs.getString(3));
@@ -159,8 +158,7 @@ public class EmpDAO {
 			}catch(Exception ex) {
 				// 에러 확인
 				ex.printStackTrace();
-			}
-			finally {
+			}finally {
 				disConnection(); // 오라클 닫기
 			}
 			return list;
