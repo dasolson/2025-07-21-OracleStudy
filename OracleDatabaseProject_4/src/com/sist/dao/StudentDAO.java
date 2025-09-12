@@ -33,7 +33,7 @@ public class StudentDAO {
     				   +"kor+neg+math,ROUND((kor+eng+math)/3.0,2) "
     				   +"FROM student";
     	    ps = conn.prepareStatement(sql);
-    	    ResultSet rs=ps.executeQuery();
+    	    ResultSet rs = ps.executeQuery();
     	    while(rs.next()) {
     	    	StudentVO vo =
     	    			new StudentVO();
@@ -57,7 +57,7 @@ public class StudentDAO {
     	Connection conn = null;
     	PreparedStatement ps = null;
     	try {
-    		conn=db.getConnection();
+    		conn = db.getConnection();
     		String sql = "INSERT INTO student(hakbun, name, kor, eng, math) "
     				   +"VALUES((SELECT NVL(MAX(hakbun(+1,100) FROM student),"
     				   +"?,?,?,?)"; // ;은 자동 추가
