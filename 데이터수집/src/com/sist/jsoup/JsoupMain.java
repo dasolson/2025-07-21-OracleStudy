@@ -9,7 +9,7 @@ public class JsoupMain {
 
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
-       String html="<html><body>"
+       String html ="<html><body>"
     		       +"<div class=k>"
     		       +"<div class=aaa>java</div>"
     		       +"<div id=bbb>Oracle</div>"
@@ -19,7 +19,7 @@ public class JsoupMain {
     		       +"<div id=bbb>HTML</div>"
     		       +"</div>"
     		       +"</body><html>";
-       Document doc=Jsoup.parse(html);
+       Document doc = Jsoup.parse(html);
        System.out.println(doc.toString());
        /*
         *  <div class=aaa>java</div>
@@ -33,7 +33,7 @@ public class JsoupMain {
         *                                 -----------------------
         *                                   Elements                                  
         */
-       Elements div=doc.select("div");
+       Elements div = doc.select("div");
        System.out.println(div);
        /*
         *     HTML은 데이터 저장
@@ -47,8 +47,8 @@ public class JsoupMain {
     	   System.out.println(div.get(i).text());
        }
        
-       Element aaa=doc.selectFirst("div.m div.aaa");
-       Element bbb=doc.selectFirst("div.m div#bbb");
+       Element aaa = doc.selectFirst("div.m div.aaa");
+       Element bbb = doc.selectFirst("div.m div#bbb");
        System.out.println(aaa);
        System.out.println(bbb);
        System.out.println(aaa.text());

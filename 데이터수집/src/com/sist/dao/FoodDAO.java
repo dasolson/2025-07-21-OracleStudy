@@ -12,7 +12,7 @@ public class FoodDAO {
     private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
     // 변경할 수 없다 ===========================>@localhost (ip) port:1521 XE : 데이터베이스 저장
     // se(XE) pe(ORCL)
-    private final int rowSize=10;
+    private final int rowSize = 10;
     // 1. 드라이버 등록
     public FoodDAO() {
     	try {

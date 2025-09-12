@@ -17,17 +17,17 @@ public class FoodDataCollection {
 	public void foodCollection() {
 		try {
 			FoodDAO dao = FoodDAO.newInstance();
-			for(int i=1; i<=346; i++) {
+			for(int i = 1; i <= 346; i++) {
 				Document doc=Jsoup.connect("https://www.menupan.com/restaurant/bestrest/bestrest.asp?page="+i+"&trec=8630&pt=rt").get();
 				Elements link = doc.select("p.listName span.restName a");
 				for(int j = 0; j < link.size(); j++) {
 					try {
 					    System.out.println("http://www.menupan.com"
 							                + link.get(j).attr("href"));
-					    String url="http://www.menupan.com"
+					    String url ="http://www.menupan.com"
 				                 + link.get(j).attr("href");
 					
-					    Document doc2=Jsoup.connect(url).get();
+					    Document doc2 = Jsoup.connect(url).get();
 					    Element name = doc2.selectFirst("div.areaBasic dd.name");
 					    //System.out.println(name.text());
 					    String strName = name.text();
@@ -61,7 +61,7 @@ public class FoodDataCollection {
 					    System.out.println("소개" + content.text());
 					    
 					    Elements etc = doc2.select("div.infoTable ul.tableLR dt");
-					    String parking ="";
+					    String parking = "";
 					    for(int k = 0; k < etc.size(); k++) {
 					    	try {
 					    		if(etc.get(k).text().equals("주차")) {
@@ -82,13 +82,13 @@ public class FoodDataCollection {
 					     *    }
 					     */
 					    Elements images = doc2.select("div#id_restphoto_slides li img");
-					    String strImage ="";
+					    String strImage = "";
 					    for(int m = 0; m < images.size(); m++) {
 					    	//System.out.println(images.get(m).attr("src"));
-					    	strImage+= "http://www.menupan.com"+images.get(m).attr("src")+",";
+					    	strImage += "http://www.menupan.com"+ images.get(m).attr("src")+",";
 					    }
 					    strImage = strImage.substring(0, strImage.lastIndexOf(","));
-					    FoodVO vo =new FoodVO();
+					    FoodVO vo = new FoodVO();
 					    vo.setName(strName);
 					    vo.setType(type.text());
 					    vo.setAddress(address.text());
