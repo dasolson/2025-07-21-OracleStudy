@@ -13,7 +13,7 @@ public class EmpMainFrame extends JFrame implements MouseListener{
     DefaultTableModel model;
     EmpDAO dao = EmpDAO.newInstance();
     public EmpMainFrame() {
-    	String s="empno, ename, job, sal, hiredate, dname, loc, grade";
+    	String s = "empno, ename, job, sal, hiredate, dname, loc, grade";
     	String[] col = s.split(",");
     	String[][] row = new String[0][col.length];
     	model = new DefaultTableModel(row, col) {

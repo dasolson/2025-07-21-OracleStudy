@@ -18,14 +18,14 @@ public class EmpDAO {
     	Connection conn = null;
     	PreparedStatement ps = null;
     	try {
-    		conn = db.disConnection();
-    	    String sql="SELECT empno, ename, job, sal, hiredate,"
+    		conn = db.getConnection();
+    	    String sql ="SELECT empno, ename, job, sal, hiredate,"
     			       +"dname, loc, grade "
     			       +"FROM emp, dept, salgrade "
     			       +"WHERE emp.deptno = dept.deptno "
     			       +"AND sal BETWEEN losal AND hisal";
-    	    ps=conn.prepareStatement(sql);
- 		    ResultSet rs=ps.executeQuery();
+    	    ps = conn.prepareStatement(sql);
+ 		    ResultSet rs = ps.executeQuery();
     	
     	   	while(rs.next()) {
     		    EmpVO vo = new EmpVO();
@@ -63,14 +63,14 @@ public class EmpDAO {
     	PreparedStatement ps = null;
     	try {
     		// SQL Injection => 해킹
-    		conn = db.disConnection();
-    		String sql="SELECT empno, ename, job, sal, hiredate,"
+    		conn = db.getConnection();
+    		String sql ="SELECT empno, ename, job, sal, hiredate,"
      			   +"dname, loc, grade "
      			   +"FROM emp, dept, salgrade "
      			   +"WHERE emp.deptno = dept.deptno "
      			   +"AND sal BETWEEN losal AND hisal "
      			   +"AND empno=?";
-    		ps=conn.prepareStatement(sql);
+    		ps = conn.prepareStatement(sql);
  		    ps.setInt(1, empno);
         	ResultSet rs = ps.executeQuery();
         	rs.next();
@@ -88,8 +88,7 @@ public class EmpDAO {
         	
     	}catch(Exception ex) {
     		ex.printStackTrace();
-    	}
-    	finally {
+    	}finally {
     		db.disConnection(conn, ps);
     	}
     	return vo;
