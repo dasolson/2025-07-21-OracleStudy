@@ -33,7 +33,7 @@ public class FoodDAO {
 	// 구현3. 오라클 연결
 	public void getConnection() {
 		try {
-			conn=DriverManager.getConnection(URL, "hr", "happy");
+			conn = DriverManager.getConnection(URL, "hr", "happy");
 		}catch(Exception ex) {}
 	}
 	// 구현4. 오라클 해제
@@ -57,9 +57,9 @@ public class FoodDAO {
 					+"FROM food "
 					+"ORDER BY fno ASC";
 			// 3. 오라클 전송
-			ps=conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			// 4. 실행 후 결과값 요청
-			ResultSet rs=ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			// 5. 전송 하기 위해 List에 값 첨부
 			while(rs.next()) { // 첫번째 위치부터 저장 시작
 				FoodVO vo = new FoodVO();
@@ -94,7 +94,7 @@ public class FoodDAO {
 			getConnection();
 			String sql = "SELECT CEIL(COUNT(*)/20.0) "
 					   +"FROM food";
-			ps=conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			total = rs.getInt(1);

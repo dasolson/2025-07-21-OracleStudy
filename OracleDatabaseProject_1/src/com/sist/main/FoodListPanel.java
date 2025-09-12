@@ -23,9 +23,9 @@ public class FoodListPanel extends JPanel{
     	add(pan);
     	
     	b1 = new JButton("이전");
-    	b2 =new JButton("다음");
+    	b2 = new JButton("다음");
     	
-    	JPanel p =new JPanel();
+    	JPanel p = new JPanel();
     	p.add(b1);
     	p.add(la);
     	p.add(b2);
