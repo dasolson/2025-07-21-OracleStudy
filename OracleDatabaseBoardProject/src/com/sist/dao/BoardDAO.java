@@ -11,7 +11,7 @@ public class BoardDAO {
     private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
     // 변경할 수 없다 ===========================>@localhost (ip) port:1521 XE : 데이터베이스 저장
     // se(XE) pe(ORCL)
-    private final int rowSize=10;
+    private final int rowSize = 10;
     // 1. 드라이버 등록
     public BoardDAO() {
     	try {
@@ -57,7 +57,7 @@ public class BoardDAO {
     		// 1. 연결
     		getConnection();
     		// 2. 오라클로 전송할 SQL 문장
-    		String sql="SELECT no, subject, name, To_CHAR(regdate,'YYYY-MM-DD'), hit, num "
+    		String sql = "SELECT no, subject, name, To_CHAR(regdate,'YYYY-MM-DD'), hit, num "
     				  +"FROM (SELECT no, subject, name, regdate, hit, rownum as num "
     				  +"FROM (SELECT no, subject, name, regdate, hit "
     				  +"FROM board ORDER BY no DESC)) "
@@ -108,7 +108,7 @@ public class BoardDAO {
     		ps = conn.prepareStatement(sql);
     		ResultSet rs = ps.executeQuery();
     		rs.next();
-    		count=rs.getInt(1);
+    		count = rs.getInt(1);
     		rs.close();
     	}catch(Exception ex) {
     		ex.printStackTrace();
@@ -121,9 +121,9 @@ public class BoardDAO {
     public void boardInsert(BoardVO vo) {
     	try {
     		getConnection();
-    		String sql="INSERT INTO board(no, name, subject, content, pwd) "
+    		String sql = "INSERT INTO board(no, name, subject, content, pwd) "
     				+"VALUES(board_no_seq.nextval,?,?,?,?)";
-    		ps=conn.prepareStatement(sql);
+    		ps = conn.prepareStatement(sql);
     		ps.setString(1, vo.getName());
     		ps.setString(2, vo.getSubject());
     		ps.setString(3, vo.getContent());
@@ -138,21 +138,21 @@ public class BoardDAO {
     }
     // 3. 상세보기 : SELECT => 조건
     public BoardVO boardDetailData(int no) {
-    	BoardVO vo=new BoardVO(); // 게시물 한개에 대한 모든 정보
+    	BoardVO vo = new BoardVO(); // 게시물 한개에 대한 모든 정보
     	try {
     		getConnection();
-    		String sql="UPDATE board SET "
+    		String sql = "UPDATE board SET "
     				 +"hit = hit+1 "
     				 +"WHERE no = ?"; // 조회수 증가
-    		ps=conn.prepareStatement(sql);
+    		ps = conn.prepareStatement(sql);
     		ps.setInt(1, no);
     		ps.executeUpdate();
     		
     		//데이터 읽기
-    		sql="SELECT no, name, subject, content, TO_CHAR(regdate, 'YYYY-MM-DD'), hit "
+    		sql = "SELECT no, name, subject, content, TO_CHAR(regdate, 'YYYY-MM-DD'), hit "
     				+"FROM board "
     				+"WHERE no = ?";
-    		ps=conn.prepareStatement(sql);
+    		ps = conn.prepareStatement(sql);
     		ps.setInt(1, no);
     		ResultSet rs=ps.executeQuery();
     		rs.next();
@@ -172,15 +172,15 @@ public class BoardDAO {
     }
     // 4. 수정 : UPDATE 
     public BoardVO boardUpdateData(int no) {
-    	BoardVO vo=new BoardVO(); // 게시물 한개에 대한 모든 정보
+    	BoardVO vo = new BoardVO(); // 게시물 한개에 대한 모든 정보
     	try {
     		getConnection();
-    		String sql="SELECT no, name, subject, content "
+    		String sql = "SELECT no, name, subject, content "
     				+"FROM board "
     				+"WHERE no = ?";
-    		ps=conn.prepareStatement(sql);
+    		ps = conn.prepareStatement(sql);
     		ps.setInt(1, no);
-    		ResultSet rs=ps.executeQuery();
+    		ResultSet rs = ps.executeQuery();
     		rs.next();
     		vo.setNo(rs.getInt(1));
     		vo.setName(rs.getString(2));
@@ -197,20 +197,20 @@ public class BoardDAO {
     }
     // 4-1 실제 수정
     public boolean boardUpdate(BoardVO vo) {
-    	boolean bCheck=false;
+    	boolean bCheck = false;
     	try {
     		getConnection();
-    		String sql="SELECT pwd FROM board WHERE no=?";
-    		ps=conn.prepareStatement(sql);
+    		String sql = "SELECT pwd FROM board WHERE no=?";
+    		ps = conn.prepareStatement(sql);
     		ps.setInt(1, vo.getNo());
-    		ResultSet rs=ps.executeQuery();
+    		ResultSet rs = ps.executeQuery();
     		rs.next();
-    		String db_pwd=rs.getString(1);
+    		String db_pwd = rs.getString(1);
     		rs.close();
     		
     		if(db_pwd.equals(vo.getPwd())) { //비밀번호가 같으면
-    			bCheck=true;
-    			sql="UPDATE board SET "
+    			bCheck = true;
+    			sql = "UPDATE board SET "
     				+"name=?, subject=?, content=? "
     				+"WHERE no=?";
     			ps=conn.prepareStatement(sql);
@@ -229,21 +229,21 @@ public class BoardDAO {
     }
     // 5. 삭제 : DELETE
     public boolean boardDelete(int no, String pwd) {
-    	boolean bCheck=false;
+    	boolean bCheck = false;
     	try {
     		getConnection();
-    		String sql="SELECT pwd FROM board WHERE no=?";
-    		ps=conn.prepareStatement(sql);
+    		String sql = "SELECT pwd FROM board WHERE no=?";
+    		ps = conn.prepareStatement(sql);
     		ps.setInt(1, no);
-    		ResultSet rs=ps.executeQuery();
+    		ResultSet rs = ps.executeQuery();
     		rs.next();
     		String db_pwd=rs.getString(1);
     		rs.close();
     		
     		if(db_pwd.equals(pwd)) { //비밀번호가 같으면
     			bCheck=true;
-    			sql="DELETE FROM board WHERE no=?";
-    			ps=conn.prepareStatement(sql);
+    			sql = "DELETE FROM board WHERE no=?";
+    			ps = conn.prepareStatement(sql);
     			ps.setInt(1, no);
     			ps.executeUpdate();
     		}
