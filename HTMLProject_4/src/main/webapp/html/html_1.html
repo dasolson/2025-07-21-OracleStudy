@@ -1,0 +1,178 @@
+<!-- 
+      => 태그 / 속성
+      텍스트 관련
+        1. 제목 : <h1>, <h3> => bold추가 
+                 <h1>제목</h1>
+                 <h3>제목</h3>
+        2. 문단 : <p> =>단독 태그 <p></p> : CSS
+        3. 줄바꿈 : <br> => 단독태그
+        4. 수평선 : <hr> => 구분선
+        5. 강조체 : <strong> , <em>
+                  <strong>출력물</strong>
+                  <em>출력물</em>
+        6. 위첨자 : <sup></sup> => new / 이미지
+        7. 있는 그대로 출력 : <pre></pre>
+                => 게시판 내용 / 줄거리                   
+      리스트 관련
+    *** 1. ul : 순서가 없는 리스트 목록
+                => 메뉴 제작
+                => 동반 => li(list item)
+                     <ul>
+                       <li>값</li>
+                     </ul>
+        2. ol : 순서가 있는 리스트
+                => 온라인 시험
+                => 동반 => li
+                   <ol>
+                     <li>값</li>
+                   </ol>       
+        3. dl : data List => 상세보기
+                => 동반 : <dt> 제목
+                         <dd> 설명
+                => <dl>
+                      <dt>제목</dt>
+                      <dd>...</dd>
+                      <dt>출연</dt>
+                      <dd>...</dd>
+                   </dl>     
+           => 단점 : 데이터 수집(크롤링)이 어렵다                  
+      링크 / 이미지 
+        1. 링크 => <a> : HTML에서 화면 이동 => <form>
+                  자바 : response.sendRedirect(파일명)
+                  자바스크립트 : location.href="파일명"
+                  => 반드시 사용해야 하는 속성값 : href="파일명"
+                  => 즁요 => 이동을 할때는 반드시 클래스명 / 파일명
+                                                    ----- JSP, HTML
+                                            ----- 서블릿
+                  => 파일을 실행한 결과를 브라우저로 전송
+        2. 이미지 => <img>
+                    => 동반 : 속성 : src="이미지 파일명"
+                                   width / height
+             |
+            <map> <area>
+        3. 기타 : <embed> <iframe>
+                 ------   ------
+                  동영상    특정 부분에 다른 HTML을 포함
+                 => src / width / height                                                               
+      폼 관련(입력창)
+        <form> => 입력된 데이터를 모아서 한번에 전송
+         ---- method="GET/POST/PUT/DELETE/HEADER" / action="전송 받을 파일지정"
+         1. input
+              1) 입력창 (한줄)
+                   type=text
+                   type=password
+              2) button 종류
+                   type=button   : 기능이 없다 => 자바스크립트 이용
+                   type=submit   : 전송 => <from>이 있어야 한다
+                   type=reset    : 입력 초기화
+                   type=radio    : 반드시 그룹처리 => name 속성이 같은 경우 => 한개 선택
+                   type=checkbox : 여러개 선택이 가능
+                   type=image    : 이미지 버튼 => submit
+                   <button> : submit      
+              3) 달력 출력 => 예약날짜 / 생일 / 체크인 / 체크아웃 ...
+                   type=date
+              4) spinner : 숫자 증가 / 감소
+                   type=number => 반드시 동반 => min / max
+              5) File 선택창
+                   type=file => 다운로드 / 업로드
+                   cos.jar : 업로드 할때 사용되는 라이브러리
+                    => 현재 사용 불가
+                    => javax
+              6) 데이터를 감춘 경우
+                   type=hidden (상당히 많이 사용)
+              => 묶어서 사용 하는 경우
+                   <fieldset> <legend> <label>
+                   ---------------------------
+                    가급적이면 접근성이 떨어지는 태그
+                    ------------------------
+                      <table> : div   
+              <form>
+              <input>
+           </form>   
+              <textarea>
+              <select>     => input까지만 전송됨 (form 태그 안에 있는 내용만 전송)                               
+         2. textarea : 멀티라인 => 여러줄 입력
+               => 동반태그 
+                    rows : title
+                    cols : width
+                  <textarea></textarea>  
+         3. select : 콤보 박스
+              => 동반 태그 => <option>
+                       <select>
+                          <option>값</option>
+                          <option>값</option>
+                          <option>값</option>
+                       </select>
+           
+      테이블 관련
+         <table> : row / column을 나눠서 처리
+         -------
+           <tr>
+            |
+        ---------
+        |       |    
+       <th>    <td> => <tr>안에 <th>나 <td>의 갯수가 일정해야 한다
+                       ------------------------------------
+                        colspan / rowspan
+                        -------   -------
+                        가로묶기     세로묶기
+      시멘텍 태그
+         => 
+             --------------------------
+                  로고 / 검색창
+                  <header>
+             --------------------------
+                    |
+               메뉴  |     본문     => 부가적 : <aside>         
+              <nav> |   <section>                  
+                    |       |             
+                    |   <article>                
+             --------------------------
+                개인정보 방침
+                <footer>
+             --------------------------
+              <div>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <select multiple="multiple">
+      <option>서울</option>
+      <option>경기</option>
+      <option>부산</option>
+   </select>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

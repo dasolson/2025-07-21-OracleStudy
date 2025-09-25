@@ -1,0 +1,122 @@
+<!-- 
+
+    (https://try.jsoup.org/)
+    
+     1. 각 태그에 공통으로 가지고 있는 속성
+         1) id    : 태그의 고유 ID => 중복이 없는 속성
+                    => CSS / JavaScript에서 태그 선택
+                    ex)   
+                        <a href="" id="a">
+                        <a href="">
+                        
+                        CSS = #id명 {
+                                 디자인
+                              }
+                              
+                        $('#a').click(function(){})      
+         2) class : 중복이 있는 속성
+                    .class명 => 태그명.calss명
+                               ---- 생략 가능
+                     ex)  select("div.list-wrap")          
+         3) style : 각 태그에만 적용
+                    = 인라인 스타일 : 테그에만 적용
+                        <tag style="width:100px">
+                    = 내부 스타일  : 한 파일에서만 적용
+                        <style>
+                        </style>
+                    = 외부 스타일  : 공통 적용 => 파일
+                        .CSS
+                    
+         4) title : 풍선 도움말
+            ----- 이미지
+      2. 텍스트 관련
+           <a>  => href , target
+           <p>  => align : center / left / right
+           <hr> => size , color , width
+      3. 이미지 . 미디어
+           <img>    => src / alt / width / height
+                             --- 풍선 도움말
+                                 onError
+           <iframe> => src / width / height
+           <embed>  => src / width / height
+      4. form 관련
+           <form> => action  : 전송 할 파일명
+                     method  : GET / POST
+                     enctype : multipart/from-data
+                     => 파일 업로드
+           <input> => type / name / value / placeholder
+                      / required / readonly / disabled
+                      / checked / max / min
+           <textarea> => name / rows / cols / placeholder
+                         / readonly / disabled
+           <select> => name / multiple / size / disabled
+           <option> => value / selected / disabled
+           <button> => type / disabled / name / value
+      5. <table>
+           : border / bordercolor / cellpadding / cellspacing   
+         <tr> - height
+         <th> - colspan / rowspan / width / height
+         <td> - colspan / rowspan / width / height / align / valign
+                                                             ------ 
+                                                              세로 => top / middle / bottom
+                                                     -----                 ------ default
+                                                     가로 => left / right / center 
+                                                            ---- default        
+                IE => center / top
+                C  => left / middle
+                                                                                                                               
+ --> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <table border="1" bordercolor=black width=500
+      cellpadding=30 cellspacing=0
+   >
+     <tr>
+       <th>이름</th>
+       <th>주소</th>
+       <th>전화</th>
+     </tr>
+     <tr>
+       <td>홍길동</td>
+       <td>서울</td>
+       <td>1111-1111</td>
+     </tr>
+     <tr>
+       <td>홍길동</td>
+       <td>서울</td>
+       <td>1111-1111</td>
+     </tr>
+   </table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
