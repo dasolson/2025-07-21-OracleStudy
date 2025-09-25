@@ -223,10 +223,10 @@ CREATE TABLE melon_music(
    title VARCHAR2(200) CONSTRAINT mm_title_nn NOT NULL,
    singer VARCHAR2(100) CONSTRAINT mm_singer_nn NOT NULL,
    album VARCHAR2(200) CONSTRAINT mm_album_nn NOT NULL,
-   poster VARCHAR2(260) CONSTRAINT mm_poster_nn NOT NULL,
-   state CHAR(6),
+   poster VARCHAR2(260) CONSTRAINT mm_poster_nn NOT N
    idcrement NUMBER,
-   Key VARCHAR2(100),
+   Key VARCHAR2(100),ULL,
+   state CHAR(6),
    hit NUMBER DEFAULT 0,
    likecount NUMBER DEFAULT 0,
    CONSTRAINT mm_no_pk PRIMARY KEY(no),
