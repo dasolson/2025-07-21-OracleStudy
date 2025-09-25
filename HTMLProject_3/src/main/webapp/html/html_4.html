@@ -1,0 +1,160 @@
+<!-- 
+        입력창
+          => 속성
+              - size : 입력 크기
+              - name : 자바로 데이터 전송시 구분자
+              - id / class : CSS / 자바스크립트 구분자
+              -----------------------------------
+              - readonly : 읽기 전용
+              - required : 반드시 입력이 있는 경우 (NOT NULL)
+          => 한번에 전송
+              - <form> 
+                  - method : 데이터 전송 방식
+                             get / post(보안, 데이터가 많은 경우)
+                  - action : 어떤 파일에 전송할 지 여부
+                ---------------------------------------------
+                
+                웹 => 받는 파일?데이터를 구분해서 전송
+                             -----------------
+                               page=1&fd=aaa
+                                    -- 공백이 있으면 안된다
+               --------------------------------------------------
+               <form method="" action="">
+                     ---------
+                      |생략 => get => 대소문자 구분은 없다
+                      |=> 파일명은 대소문자 구분이 된다                          
+ -->
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styleseet" href="table.css">
+<style type="text/css">
+h1 {
+   text-align: center;
+}
+table {
+   margin: 0px auto; /* 가운데 정렬 */
+}
+</style>
+</head>
+<body>
+   <h1>회원가입</h1>
+   <table id="table_content" width=600>
+     <tr>
+       <th width=20%>아이디</th>
+       <td  width=80%>
+          <input type=text size="20">
+          <input type=button value="중복체크">
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>비밀번호</th>
+       <td  width=80%>
+          <input type=password size="20">
+          <input type=password placeholder="재입력">
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>이름</th>
+       <td  width=80%>
+          <input type=text size="20">          
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>성별</th>
+       <td  width=80%>
+          <input type="radio" name="sex" checked>남자  
+          <input type="radio" name="sex" >여자        
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>생년월일</th>
+       <td  width=80%>
+          <input type=date size="20">          
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>우편번호</th>
+       <td  width=80%>
+          <input type="text" size=7 readonly>-<input type="text" size=7 readonly>
+          <input type="button" value="우편번호 검색">       
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>주소</th>
+       <td  width=80%>
+          <input type=text size="60" readonly>          
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>상세주소</th>
+       <td  width=80%>
+          <input type=text size="60">          
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>전화번호</th>
+       <td  width=80%>
+          <select>
+            <option>02</option>
+            <option>031</option>
+            <option>032</option>
+          </select>
+          <input type=text size="13">          
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>취미</th>
+       <td  width=80%>
+          <input type=checkbox>여행   
+          <input type=checkbox>등산
+          <input type=checkbox>게임
+          <input type=checkbox>독서
+          <input type=checkbox>낚시
+          <input type=checkbox>공부       
+       </td>
+     </tr>
+     <tr>
+       <th width=20%>소개</th>
+       <td  width=80%>
+          <textarea rows="5" cols="60"></textarea>          
+       </td>
+     </tr>
+     <tr>
+       <td colspan="2" align="center">
+          <input type="submit" value="전송">
+          <input type="button" value="취소">
+       </td>
+     </tr>
+   </table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

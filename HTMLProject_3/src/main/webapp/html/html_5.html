@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="styleseet" href="table.css">
+<style type="text/css">
+h1 {
+   text-align: center;
+}
+table {
+   margin: 0px auto; /* 가운데 정렬 */
+}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#btn').change(function(){
+		let count=$('#account').val()
+		let won=$('#price').text()
+		let total=count*parseInt(won)
+		$('#total').text(total)
+	})
+})
+</script>
+</head>
+<body>
+   <table id="table_content" width=350>
+     <tr>
+       <td colspan="2">금액 : <span id="price">7000</span></td>
+     </tr>
+     <tr>
+       <th width=20%>수량</th>
+       <td width=80%>
+          <input type="number" max="10" min="1" id="account">
+          <input type="button" value="추가" id="btn">
+       </td>
+     </tr>
+     <tr>
+        <td colspan="2" align="right">
+          <span id="total" style="color: red"></span>
+        </td>
+     </tr>
+     
+   </table>
+</body>
+</html>

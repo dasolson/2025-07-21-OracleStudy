@@ -1,0 +1,192 @@
+<!-- 
+       1) 글자 관련 태그
+           = h1 ~ h6 (h1,h3) => 제목
+           = br / p => 줄바꿈
+           = 출력된 형태 그대로 출력 => pre (내용보기)
+           = strong, b => 강조체
+           = sup => 위 첨자
+       2) 목록 태그
+           = ul / ol / dl / table
+             |    |     |     |
+                              tr
+                              |
+                          ---------
+                          |       |
+                         th      td     
+                       dt/dd 
+                 li
+             li(list item) => 데이터 출력    
+       3) 멀티미디어 태그
+           = img    : 이미지 출력
+           = embed  : 동영상 출력
+           = iframe : 다른 파일을 첨부
+            ----------------------- 속성 : src
+       4) 링크 태그 : 다른 파일로 이동
+           = a => href
+       5) 입력창 태그 : input / textarea / select       
+       6) 화면 분할 태그 : div / span
+       7) 템플릿 태그 : header / section / footer / nav / article
+       8) label / fieldset
+      --------------------------------------------------------------- 
+       
+       입력창 : 글쓰기 , 검색 , 로그인 , 회원가입 ...             
+              장바구니 => 수량 체크
+        1. 입력창 : input
+             => 속성
+                --- type , name , size
+                                   | 입력 크기
+                     | 종류   |자바에서 값을 받는다  
+               = type
+                   1) text => <input type=text> 한 줄 문자열
+                         => ID입력 , 검색창 , 주소 ...
+                   2) file => <input type=file>
+                         => 업로드
+                   3) 버튼 종류
+                         - button / reset / submit / image
+                           radio / checkbox
+                          형식)  <input type=button value="로그인">
+                                -------------------------------
+                                 | 기능이 없다 => 자바스크립트 이용
+                                <input type=reset value="취소">
+                                <input type=submit value="전송">
+                                ------------------------------
+                                 | <input type=image> : submit
+                                 | <button></button>
+                                => Group으로 묶어서 사용 
+                              **<input type=radio name=sex check>남자 
+                                  => checked
+                                <input type=radio name=sex>여자   
+                                <input type=checkbox name=hobby>낚시
+                                <input type=checkbox name=hobby>등산
+                                <input type=checkbox name=hobby>게임 
+                                
+                                => id , class : CSS / JavaScript
+                                => name : Java => 입력값을 받는 경우 구분자
+                                  ex) 
+                                      이름:<input type=text name=name>
+                                         => getparameter("name")
+                                      주소:<input type=text name=addr>
+                                         => getparameter("addr")
+                                      전화:<input type=text name=phone>
+                                         => getparameter("phone")    
+                    4) 날짜 => 달력
+                         - date => <input type=date size="20">
+                    5) 비밀번호 입력
+                         - password => <input type=password size=10>
+                    6) Spinner 
+                         - number => <input type=numbermax=100 min=1>
+                    7) 슬라이더
+                         - range => <input type=range max=100 min=1>
+                    8) HIDDEN
+                         - hidden => 데이터를 감춰서 전송
+                                     <input type=hidden>
+               -------------------------------------------------------------------------
+                textarea : 여러줄 입력
+                ------------------- <textarea></textarea>
+                콤보박스 : 한개 선택
+                         <select>
+                             |
+                         <option>값
+                                                                                                            
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <table border=1 bodercolor=black width=350>
+    <tr>
+      <td>한줄문자</td>
+      <td><input type=text size=20></td>
+    </tr>
+    <tr>
+      <td>비밀번호 입력</td>
+      <td><input type=password size=20></td>
+    </tr>
+    <tr>
+      <td>파일 선택창</td>
+      <td><input type=file size=20></td>
+    </tr>
+    <tr>
+      <td>달력</td>
+      <td><input type=date size=20></td>
+    </tr>
+    <tr>
+      <td>일반 버튼</td>
+      <td><input type=button value="로그인"></td>
+    </tr>
+    <tr>
+      <td>전송 버튼</td>
+      <td><input type=submit value="전송"></td>
+    </tr>
+    <tr>
+      <td>초기화 버튼</td>
+      <td><input type=reset value="취소"></td>
+    </tr>
+    <tr>
+      <td>이미지 버튼</td>
+      <td><input type=image src="data:image/png;base64,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"></td>
+    </tr>
+    <tr>
+      <td>라디오 버튼</td>
+      <td><input type=radio name=sex>남자
+          <input type=radio name=sex>여자
+      </td>
+    </tr>
+    <tr>
+      <td>체크 버튼</td>
+      <td><input type=checkbox name=hobby>낚시
+          <input type=checkbox name=hobby>등산
+          <input type=checkbox name=hobby>게임
+      </td>
+    </tr>
+    <tr>
+      <td>스피너 버튼</td>
+      <td><input type=number max="100" min="1"></td>
+    </tr>
+    <tr>
+      <td>슬라이더 버튼</td>
+      <td><input type=range max="100" min="1"></td>
+    </tr>
+    <tr>
+      <td>콤보 박스</td>
+      <td>
+        <select>
+           <option>이름</option>
+           <option>제목</option>
+           <option>내용</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>멀티라인</td>
+      <td>
+        <textarea rows="3" cols="35"></textarea>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
