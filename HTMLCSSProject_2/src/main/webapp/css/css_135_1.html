@@ -1,0 +1,42 @@
+<!-- 
+      속성 선택자
+        태그[속성=값]  : 같은 값이면 
+        태그[속성*=값] : 포함된 값
+        태그[속성^=값] : 시작 문자
+        태그[속성$=값] : 끝 문자
+        ------------------------
+        <input>  <img>  <a>  : 많이 사용 => 구분자 (.id, class를 사용하지 않는다)  
+        
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img {
+   width: 150px;
+   height: 250px;
+}
+img[src$='jpg']{
+   border: 5px red dotted;
+}
+img[src$='png']{
+   border: 5px green dashed;
+}
+img[src$='gif']{
+   border: 5px blue double;
+}  
+img[src*='m3']{
+   opacity: 0.3;
+}
+</style>
+</head>
+<body>
+   <img src="mm1.jpg">
+   <img src="mm2.gif">
+   <img src="mm3.png">  
+   <img src="mm2.jpg">
+   <img src="mm3.jpg"> 
+</body>
+</html>

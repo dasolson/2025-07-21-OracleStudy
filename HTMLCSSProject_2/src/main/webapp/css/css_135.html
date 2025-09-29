@@ -1,0 +1,56 @@
+<!-- 
+       속성 선택자
+       -------- 속성의 값
+       ML => 태그 + 속성
+         <input type=text value=Java">
+          ----- ----      -----
+           태그   속성       속성
+       input[type='text']
+       input[value='Java']    
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+input[type='text']{
+   background-color: green; 
+   color: white;
+}
+input[value='Java'] {
+   background-color: red; 
+}
+input[value='Oracle'] {
+   background-color: blue; 
+}
+input[value='HTML'] {
+   background-color: magenta; 
+}
+input[value='CSS'] {
+   background-color: gray; 
+}
+input[value='JavaScript'] {
+   background-color: black; 
+}
+input[value*='Java']{
+   background-color: white;
+}
+input[value^='Or'] {
+   background-color: pink;
+}
+input[value$='ML'] {
+   background-color: rgb(255,255,200);
+}
+</style>
+</head>
+<body>
+   <ul>
+     <li><input type="text" value="Java"></li><!-- red -->
+     <li><input type="text" value="Oracle"></li><!-- blue -->
+     <li><input type="text" value="HTML"></li><!-- magenta -->
+     <li><input type="text" value="CSS"></li><!-- gray -->
+     <li><input type="text" value="JavaScript"></li><!-- black -->
+   </ul>
+</body>
+</html>

@@ -136,22 +136,9 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="HTMLProject_1" path="/HTMLProject_1" reloadable="true" source="org.eclipse.jst.jee.server:HTMLProject_1"/><Context docBase="HTMLProject_2" path="/HTMLProject_2" reloadable="true" source="org.eclipse.jst.jee.server:HTMLProject_2"/>
-      <Context docBase="OracleCRUDProject" path="/OracleCRUDProject" reloadable="true" source="org.eclipse.jst.jee.server:OracleCRUDProject">
-          <Resource
-              driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@Localhost:1521:XE"
-              username="hr"
-              password="happy"
-              auth="Container"
-              name="jdbc/oracle"
-              type="javax.sql.DataSource"
-              macActive="10"
-              maxIdle="10"
-              maxWait="-1"
-          />
-      </Context>
-      <Context docBase="HTMLProject_3" path="/HTMLProject_3" reloadable="true" source="org.eclipse.jst.jee.server:HTMLProject_3"/><Context docBase="HTMLProject_4" path="/HTMLProject_4" reloadable="true" source="org.eclipse.jst.jee.server:HTMLProject_4"/></Host>
+      
+      
+      <Context docBase="HTMLCSSProject_1" path="/HTMLCSSProject_1" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_1"/><Context docBase="HTMLCSSProject_2" path="/HTMLCSSProject_2" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_2"/></Host>
     </Engine>
   </Service>
 </Server>

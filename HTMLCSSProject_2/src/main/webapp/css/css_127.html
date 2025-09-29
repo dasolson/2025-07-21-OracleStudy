@@ -1,0 +1,178 @@
+<!-- 
+      내부 CSS : 해당 파일 전체 사용
+        <head>
+           <style type="text/css">
+              선택자 {
+                속성 : 값;
+              }  
+           </style>
+        </head>
+        
+      인라인 CSS : 태그 한개만 제어
+        <태그 style="속성:값;속성:값;">
+      
+      외부 CSS : 프로젝트 전체 파일에서 사용
+      ------- .css 파일을 만들어서 처리
+        <link rel="stylesheet" href="파일:URL">
+        
+      CSS는 태그에 대한 디자인
+           ---------
+           | 태그 선택 = 선택자(selector)
+           | 유사한 태그가 많다
+             -------------- 구분 
+              | id
+              | class
+              | 속성값으로 처리
+              | 위치
+              | 옆에 있는 태그 / 아래에 있는 태그
+        1. 선택자의 종류
+           1) 전체 선택자 : *
+                * {
+                  color:값 => 파일 전체 색상
+                  font-family : 글꼴
+                }    
+           2) 태그 선택자 : a , p , table ...
+                태그명 {
+                   속성 : 값;
+                }     
+                ul {
+                   list-type : none
+                }
+           3) 모든 태그는 공통으로 가지고 있는 속성이 있다
+                => style / id / class
+                                ----- 
+                           --   | 중복이 있는 값
+                           | 중복이 없는 값 
+                #아이디명 {
+                   속성 : 값;  
+                }          
+                .클래스명 {
+                   /* 주석 */
+                   속성 : 값;
+                   속성 : 값;
+                   ...
+                }   
+           4) 속성 선택자 : img , input , a ...
+              --------
+                HTML
+                  -- Markup Language
+                     <태그명 속성명="">                    
+                ex)
+                     <input type=button>
+                     <input type=text>
+                     <input type=file>
+                     
+                     => input[type='button']
+                     
+                     태그명[속성=값]  = equals
+                     태그명[속성*값]  = contains ==> img 경로
+                                     => img 출력
+                                      img[src*=/recipe/]
+                                      img[src*=/rpf/]
+                     태그명[속성^=값] = startsWith
+                                      a[href^=http|https]                                      
+                     태그명[속성$=값] = endsWith  
+                                      확장자
+                                      img[src$='jpg|png|gif']
+           5) 후손 / 자손 선택자 / 멀티 선택자
+                  후손 / 자손 
+                       <div>
+                         <h1></h1> => 자손 => div > h1
+                         <h1></h1> => 자손
+                         <span>           => div > span
+                            <h1></h1> => 후손 => div span h1
+                         </span> => 자손
+                       </div>                                
+                  멀티
+                       div , span , h1 {
+                           속성 : 값;
+                       }
+           6) 동위 선택자
+                <table>
+                   <tr>
+                     <th id="a">이름</th>
+                     <td>홍길동</td>
+                     <td>12345</td>
+                   </tr>
+                   <tr>
+                     <th id="b">제목</th>
+                     <td>홍길동입니다</td>
+                     <td>12345</td>
+                   </tr>
+                </table>       
+                
+                       table
+                         |
+                   ------------
+                   |          |
+                  <tr>       <tr>
+                   |     
+             ------------
+             |     |     |
+            <th>  <td>  <td> 
+        
+        th#a + td => 인접 *** 크롤링
+        --------- 바로 옆에 있는 태그 1개
+        th#a ~ td => 형제 
+        ---- 옆에 있는 모든 태그 읽기
+            
+            7) 가상 선택자
+                 => :
+                   - 반응 선택자
+                       선택자 : hover => mouseover
+                   - 상태 선택자
+                       ***선택자:checked => 체크박스 / 라디오
+                          선택자:enabled : 활성화 
+                          선택자:disabled : 비활성화
+                   - 구조 선택자
+                       선택자:first-child : 첫번째줄 / 첫번째칸
+                            ----------- 제목에 색상
+                       선택자:last-child : 마지막 줄                   
+                       선택자:nth-child(수열) : 원하는 위치 제어    
+                   - 문자 선택자
+                       선택자::before
+                       선택자::after
+                   - 부정 선택자     
+                       선택자:not(선택자)       
+                 => ::       
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<!-- 
+      ID 속성 => id (모든 태그가 가지고 있다)
+        <img id="i1">
+        <img id="i2">
+          => 같은 파일에서 중복적으로 사용하면 안된다
+          => HTML은 유연하다 
+          => 문자로 시작, 숫자로 시작 x
+     
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#i1, #i3, #i2 {
+   width: 150px;
+   height: 200px;
+}
+</style>
+</head>
+<body>
+   <img src="mm1.jpg" id="i3">
+   <img src="mm2.jpg" id="i1">
+   <img src="mm3.jpg" id="i2">
+</body>
+</html>

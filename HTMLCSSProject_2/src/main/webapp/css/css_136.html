@@ -1,0 +1,36 @@
+<!-- 
+       후손 선택자 / 자손 선택자
+          <div>
+            <p></p>
+            <h1></h1>
+            <span>
+               <h1></h1>
+            </span>
+          </div>
+            div => p h1 span : 자손
+            div => span h1   : 후손  
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div > h1 {
+  color: red;
+}
+div span h1 {
+  color: blue;
+}
+</style>
+</head>
+<body>
+   <div>
+     <p>Hello CSS1</p>
+     <h1>Hello CSS2</h1>
+     <span>
+       <h1>Hello CSS3</h1>
+     </span>
+   </div>
+</body>
+</html>
