@@ -138,7 +138,7 @@
 
       
       
-      <Context docBase="HTMLCSSProject_1" path="/HTMLCSSProject_1" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_1"/><Context docBase="HTMLCSSProject_2" path="/HTMLCSSProject_2" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_2"/></Host>
+      <Context docBase="HTMLCSSProject_1" path="/HTMLCSSProject_1" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_1"/><Context docBase="HTMLCSSProject_2" path="/HTMLCSSProject_2" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_2"/><Context docBase="HTMLCSSProject_3" path="/HTMLCSSProject_3" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_3"/></Host>
     </Engine>
   </Service>
 </Server>
