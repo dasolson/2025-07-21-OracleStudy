@@ -1,0 +1,117 @@
+<!-- 
+       반응 선택자
+         :focus / :disabled / :enabled / :checked
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+   font-family: sans-serif;
+   padding: 20px;
+   background: #f9f9f9;
+}
+.card {
+   background: white;
+   border-radius: 10px;
+   padding: 20px;
+   margin-bottom: 20px;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+h2 {
+   margin-top: 0;
+}
+/* checked */
+input[type="checkbox"].cb{
+   margin-right: 10px;
+}
+label.cb-label {
+   font-weight: normal;
+   color: black;
+}
+input[type="checkbox"].cb:checked + label{
+   font-weight: bold;
+   color: green;
+}
+/* focus */
+input.focus-input{
+   border: 2px solid gray;
+   padding: 5px;
+   border-radius: 5px;
+}
+input.focus-input:focus{
+   border-color: blue;
+   background-color: green;
+}
+/* enabled / disabled */
+button.state-btn{
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   margin-top: 5px;
+   margin-right: 10px;
+   cursor: pointer;
+}
+button:enabled{
+   background-color: aqua;
+   color: black; 
+}
+button:disabled{
+   background-color: gray;
+   color: white;
+   cursor: not-allowed;
+}
+</style>
+</head>
+<body>
+   <div class="card">
+     <h2>:checked</h2>
+     <input type="checkbox" id="agree" class="cb">
+     <label for="agree" class="cb-label">동의합니다</label>
+   </div>
+   <div class="card">
+     <h2>:focus</h2>
+     <input type="text" class="focus-input" placeholder="검색어 입력">
+   </div>
+   <div class="card">
+     <h2>:enabled / :disabled</h2>
+     <button class="state-btn">활성화된 버튼</button>
+     <button class="state-btn" disabled>비활성화된 버튼</button>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

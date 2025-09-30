@@ -1,0 +1,181 @@
+<!-- 
+       1. CSS : 태그 선택자
+          1) 기본 선택자
+              * : 전체 선택 => 글꼴 , 간격 (margin/padding)
+                  * {
+                     font-family : 글꼴 => google폰트 , 시스템 폰트
+                     ----------- 여러개 지정 가능
+                                  굴림체, 궁서체..
+                     margin : 0px
+                     padding : 0px             
+                  }
+              id 속성 : 중복없는 태그
+                  <a href="" id="aaa">
+                  #aaa {
+                      속성 : 값;
+                      ---   -- > 이미 만들어져 있다
+                                 ctrl + space
+                  }    
+              class 속성 : 중복이 있는 태그
+                  <img src="" class="aaa">
+                  .aaa {
+                      속성 : 값;
+                  }    
+              -----------------------------------------------------
+              ** 우선 순위
+                !important (가장 높은 순위)
+                인라인 스타일  <태그 style="">
+                아이디 선택자
+                클래스 선택자 , 속성 선택자 , 가상 선택자 ( :hover ...)
+                태그 선택자 , 가상 요소 (::after , ::before)  
+                전체 선택자
+                
+              *** 동일한 태그 => 나중에 선언된 스타일 적용
+                ex)  img {
+                     
+                     }
+                     img {
+                     
+                     }     => 적용  
+          
+          2) 속성 선택자
+              => HTML (ML => 태그 + 속성)
+              => 속성 값을 이용해서 => 태그 찾는 방법
+                태그[속성=값]  => 같은 값인 경우
+                태그[속성*=값] => contains : 포함된 경우
+                ------------------------ <img> : 경로
+                태그[속성^=값] => startsWith : 시작 문자열
+                ------------------------- <a> : href => https / http
+                태그[속성$=값] => endsWith : 끝 문자열
+                ------------------------ <img> : 확장자 jpg , pmg , gif
+                <img> , <a> , <input> : 구분자 없이 사용
+                --------------------- 
+                전체 태그 : id , class  입력 : id , class , name
+                   name => 자바로 값을 전송 할 때 사용
+                   => <input> , <select> , <textarea>
+          
+          3) 자손 선택자 / 후손 선택자 : JSoup , Ajax , JQuery
+                선택자 : 태그 읽기 => 자바스크립트 , CSS , JSoup
+                -----------------------------------------
+                 | 데이터 송수신 : **JSON , XML
+                         div
+                          |
+                    -------------
+                    |   |   |   |
+                    p   h1  h1 span ==> 자손 div > p
+                    ------  --              div > h1
+                     인접    형제
+                                |
+                                h1  ==> 후손 div span h1             
+                동의 선택자
+                  = 인접  ==> p + h1
+                            JSoup : <th>업체명</th>
+                                    <td></td>
+                  = 형제들 ==> p ~ h1 
+                 
+          
+          4) 가상 클래스 (선택자)
+               태그:hover    => mouseover => 마우스가 올려졌을때
+               태그:active   => 클릭시 활성화
+               태그:focus    => 버튼 , input
+               id => id 체크
+               태그:enabled  => 활성화된 상태
+               태그:disabled => 비활성화된 상태
+               태그:checked  => 체크박스 / 라디오버튼
+              --------------------------------------------- 상태
+               :first-child : 첫번째
+                              <li> , <tr> , <td> ...
+               :last-child  : 마지막
+               :nth-child   : 위치 찾기
+              --------------------------------------------- 구조 선택자
+                                                            --------
+                                                             | 목록
+                                                             | <table> , <ul> , <ol> , <dl>
+               :nth-child(n) => 수열 => 1번 시작
+               :nth-child(odd) / nth-child(even)
+                => 홀수            => 짝수
+                수열 n => 0부터
+                 :nth-child(2n)   => 0 2 4 6 ...
+                 :nth-child(2n+1) => 1 3 5 ...                                                
+                 :nth-child(3n+2) => 2 5 7 ... (table에서 td, tr)
+           
+          5) 부정 선택지
+               not(선택자) : 특정 선택자 제외 => JSoup                
+          
+          6) ::before, ::after
+               => <- 이미지 ->
+               => 상품 홍보 => 특가 상품 / 할인    
+          
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+p {
+   padding: 10px; /* top right bottom left */
+   /* 10px 10px 10px 10px */
+   /* 
+       padding : 10px 20px
+         => 10px 20px 10px 20px
+       padding : 10px 20px 30px
+         => 10px 20px 30px 20px
+         => 시계방향  
+   */   
+   border: 1px solid #ccc;
+   margin: 5px 0;
+   background-color: #f0f0f0;
+}
+p:not(.aaa){
+   background-color: #fc6;
+   font-weight: bold; 
+}
+</style>
+</head>
+<body>
+   <h1>:not(선택자)</h1>
+   <div class="items">
+     <p>상품명 1</p>
+     <p class="aaa">상품 설명(제외)</p>
+     <p>상품명 2</p>
+     <p class="aaa">상품 설명(제외)</p>
+     <p>상품명 3</p>
+     <ul>
+       <li>첫번째</li>
+       <li class="skip">제외</li>
+       <li>두번째</li>
+       <li class="skip">제외</li>
+       <li>세번째</li>
+     </ul>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

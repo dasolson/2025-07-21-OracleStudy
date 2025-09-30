@@ -1,0 +1,112 @@
+<!-- 
+      CSS 단위
+        1) 절대 단위 : 다른 태그와 무관하게 고정된 크기
+                     px , cm , mm , in , pt
+                     --                    --
+             ** px : 화면상의 점 => 가장 많이 사용되는 단위
+                cm : 1cm  = 37.8px
+                mm : 10mm = 1cm
+                in : 1in  = 2.54cm = 96px
+                pt : 1pt  = 1/72in => font      
+        2) 상대 단위 : 다른 태그의 상황에 따라 크기가 다르다 (가변)
+                     % , em , rem      
+                     --  --   ---
+                               | 실제 디자인에 사용
+                 % : 부모 태그 기준 비율
+                     <div width=100px>
+                        <span width=50%></span> => 50px
+                     </div>                  
+                em : 글자 크기
+                     부모의 글자 크기 기준 => 2em : 부모 폰트의 2배 
+                     ---------------- 14 => 2em => 28
+               rem : 루트의 폰트 크기 기준 => 폰트 크기 일관된 디자인 (publisher)           
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.box1 {
+   width: 200px;
+   height: 100px;
+   background-color: olive;
+}
+.box2 {
+   width: 50%;
+   height: 50px;
+   background-color: lime;
+}
+body {
+   font-size: 30px;
+}
+.text1 {
+   font-size: 2em;
+}
+.test2 {
+   font-size: 2rem;
+}
+.full {
+   width: 300px;
+   height: 300px;
+   background: #ff00ff;
+}
+</style>
+</head>
+<!-- 
+       px : 버튼 / 아이콘 크기
+            테두리             => 글자 크기(비추천)
+            위치 조정
+        % : 레이아웃  => 글자 크기(비추천, 예측이 안된다) 
+       em : 글자 관련 크기
+       
+       margin / padding / width / height => px
+       Layout : % 주로 사용
+          ----------------------------------
+          
+          ----------------------------------
+                  |
+                  |         
+                  |          
+                  |          
+          ----------------------------------
+          
+          ----------------------------------
+              
+ -->
+<body>
+   <div class="box1">px 단위</div>
+   <div class="box2">% 단위(반응형 웹)</div>
+   <div class="text1">em 단위(글자크기)</div>
+   <div class="text2">rem 단위(글자크기)</div>
+   <div class="full">풀단위</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

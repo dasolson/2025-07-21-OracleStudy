@@ -61,7 +61,7 @@
          AJP  Connector: /docs/config/ajp.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="80" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -138,7 +138,7 @@
 
       
       
-      <Context docBase="HTMLCSSProject_1" path="/HTMLCSSProject_1" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_1"/><Context docBase="HTMLCSSProject_2" path="/HTMLCSSProject_2" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_2"/><Context docBase="HTMLCSSProject_3" path="/HTMLCSSProject_3" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_3"/></Host>
+      <Context docBase="HTMLCSSProject_1" path="/HTMLCSSProject_1" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_1"/><Context docBase="HTMLCSSProject_2" path="/HTMLCSSProject_2" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_2"/><Context docBase="HTMLCSSProject_3" path="/HTMLCSSProject_3" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_3"/><Context docBase="HTMLCSSProject_4" path="/HTMLCSSProject_4" reloadable="true" source="org.eclipse.jst.jee.server:HTMLCSSProject_4"/></Host>
     </Engine>
   </Service>
 </Server>

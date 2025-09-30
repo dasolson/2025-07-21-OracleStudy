@@ -1,0 +1,45 @@
+<!-- 
+       구조 선택자
+          = :first-child : 첫번째
+          = :last-child  : 마지막
+          = :nth-child   : 지정 => Jsoup (+ 인접)
+          => 목록 출력
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+a{
+   color: black;
+   text-decoration: none;
+}
+a:hover{
+   color: green;
+   text-decoration: underline;
+}
+li:first-child > a {
+	color: purple;
+}
+li:last-child > a {
+	color: red;
+}
+li:nth-child(odd) > a {
+	color: blue;
+}
+li:nth-child(even) > a {
+	color: orange;
+}
+</style>
+</head>
+<body>
+   <ul>
+      <li><a href="#">홈</a></li>
+      <li><a href="#">회원</a></li>
+      <li><a href="#">예약</a></li>
+      <li><a href="#">커뮤니티</a></li>
+      <li><a href="#">마이페이지</a></li>     
+   </ul>
+</body>
+</html>
