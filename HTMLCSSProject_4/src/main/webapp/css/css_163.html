@@ -1,0 +1,122 @@
+<!-- 
+      속성
+        1. 박스 속성
+            = margin / padding / border    
+            1) margin  : 태그와 태그 사이의 여백
+                 - margin-top
+                 - margin-right
+                 - margin-bottom
+                 - margin-left
+                   --------------
+                   margin : top right bottom left
+                    => 시계방향 
+            2) padding : 태그 안에 이미지, 글자에 대한 여백
+                 - padding-top
+                 - padding-right
+                 - padding-bottom
+                 - padding-left
+                   --------------
+                   padding : top right bottom left 
+                    => 시계방향 
+            3) border  : 테두리     
+                 - border-width  : 두께
+                 - border-color  : 색상
+                 - border-style  : type (solid, dotted , dashed ..)
+                   ------------ +
+                    => border : width style color
+                                 => 순서를 다르게 해도 된다
+                 - border-radius : 타원형
+                     => 왼쪽 위 / 오른쪽 위 / 오른쪽 아래 / 왼쪽 아래
+                        ------------------------------------ 반지름   
+                 - border-collpase : 라인선 통합 (테이블)    
+                       
+        2. 가시 속성
+            = display
+        3. 배경 속성
+            = background
+        4. 글자 속성
+            = font / text
+        5. 위치 속성
+            = static / absolute / fixed
+        6. 유동 속성
+            = float
+        7. 그림자 속성 / 그라디언트 속성
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img {
+   width: 120px;
+   height: 120px;
+   display: block;
+   margin-top: 10px;
+}
+div {
+   width: 130px;
+   height: 30px;
+   background-color: black;
+   color: white;
+   display: inline;
+   margin-top: 50px;
+}
+img.a {
+   display: inline;
+   margin-left: 10px;
+}
+div.b{
+   width: 800px;
+   height: 150px;
+   background-color: black;
+}
+</style>
+</head>
+<body>
+   <div>Hello CSS</div>
+   <div>Hello CSS</div>
+   <div>Hello CSS</div>
+   <p>
+   <img src="mm1.jpg">
+   <img src="mm2.jpg">
+   <img src="mm3.jpg">
+   <p>
+   <img src="mm1.jpg" class="a">
+   <img src="mm2.jpg" class="a">
+   <img src="mm3.jpg" class="a">
+   <p>
+   <div class="b">
+      <img src="mm1.jpg" class="a">
+      <img src="mm2.jpg" class="a">
+      <img src="mm3.jpg" class="a">
+   </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.wrapper {
+   display: flex;
+   gap: 20px;
+   border: 1px solid black;   
+}
+.box {
+   width: 300px;
+   height: 100px;
+   background-color: lightyellow;
+   padding: 20px;
+   border: 5px solid orange;
+   margin: 30px;
+   box-sizing: content-box;
+}
+.box-border {
+   width: 200px;
+   height: 100px;
+   background-color: lightgreen;
+   padding: 20px;
+   border: 5px solid navy;
+   margin: 30px;
+   box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+   <h2>CSS 박스 모델</h2>
+   <div class="wrapper"> <!-- wrapper / container -->
+      <div class="box">
+         Content+Padding+Border+Margin
+      </div>
+      <div class="box-border">
+         Border - box 예제
+      </div>
+   </div>
+</body>
+</html>
