@@ -1,0 +1,147 @@
+<!-- 
+      1. 선택자의 종류
+         1) 전체 선택자 : * => margin / padding / font
+             ex) 
+                 * {
+                   font-family: 맑은 고딕, 궁서체...
+                 }
+         2) 태그 선택자 : 태그명
+             ex) 
+                 h1 {
+                    color: red;
+                    background:yelloew; 
+                 }       
+         3) ID 선택자 : <h1 id=""> : 한개의 태그에만 적용
+             ex)
+                 #id명 {
+                    속성 : 값;
+                 }        
+         4) class 선택자 : <h1 class=""> : 여러개 태그에 적용
+             ex)
+                 .class명 {
+                    속성 : 값;
+                 }  
+         5) 속성 선택자 : 모든 태그에 적용 => img / a / input
+             ***선택자[속성=값] 
+               ex) 
+                   input[type=text] => text일떄
+                   input[type=button] => button일때
+                   input[type=submit] => submit일때
+             ***선택자[속성*=값] => contains
+               => 포함
+               ex) 
+                   <img src="http://localhost/~">
+                   <img src="http://localhost/~">
+                   <img src="http://211.238.142.124/~">
+                   img[src*=localhost]
+             ***선택자[속성^=값] => startsWith
+               ex) 
+                   <img src="http://localhost/~">
+                   <img src="https://localhost/~">
+                   <img src="https://211.238.142.124/~">
+                   img[src^=http]
+             ***선택자[속성$=값] => endsWith
+               ex) 
+                   <img src="http://localhost/a.jpg">
+                   <img src="https://localhost/b.jpg">
+                   <img src="https://211.238.142.124/c.jpg">
+                   img[src$=jpg    
+                선택자[속성!=값]               
+                  ex) 
+                      input[type=text] => text일떄
+                      input[type=button] => button일때
+                      input[type=submit] => submit일때
+                      input[type!=text]
+                      
+               <div>
+                  <p></p>
+                  <h1></h1>
+                  <h1></h1>
+                  <span>
+                    <h1></h1>
+                  </span>  
+               </div>
+               
+                          div => 트리 형태로 저장 (DOM)
+                           |
+                    ------------------
+                    |     |     |     |            
+                    p     h1    h1   span ==> 자손
+                                      |
+                                      h1  ==> 후손   
+         5) 후손 선택자
+              div span h1 => div#id span.class명 h1 
+                   => 공백으로 구분             
+         6) 자손 선택자                  
+              div > h1    div > span
+         7) 반응 선택자
+              :hover (a, img, tr ...)     
+              :active(a)
+         8) 상태 선택자
+              선택자:checked => 체크박스 / 라디오버튼 ***
+                  => 쿠키
+              선택자:enabled / disabled
+                  => button / text (아이디 체크)
+         9) 구조 선택자
+             --------------  
+              first-child
+              last-child
+             -------------- 메뉴 제작  
+              nth-child(수열)              
+                  
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img:hover{
+   opacity: 0.3;
+}
+a {
+  color:black;
+  text-decoration: none;
+}
+a:hover{
+  color:green;
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+   <img src="mm1.jpg">
+   <img src="mm2.jpg">
+   <img src="mm3.jpg"><p>   
+   <a href="#">자바</a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

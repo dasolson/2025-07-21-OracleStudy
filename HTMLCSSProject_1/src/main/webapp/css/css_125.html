@@ -1,0 +1,78 @@
+<!-- 
+           1) selector
+               = 태그 (HTML에 있는 모든 태그)
+                 태그명 { 
+                    속성 : 값;
+                 }
+               = 기본 선택자     
+                  * : 모든 태그에 적용 : 간격, 글꼴
+                    *{
+                       속성 : 값;
+                       ...
+                       ...
+                    }   
+                       
+                  id => 속성
+                     <h1 id="a"> : 태그에 중복없이 사용
+                    #id명 {
+                       속성 : 값;
+                    } 
+                    => #a {
+                       }
+                 class => 중복 가능 => 크롤링 
+                    .class명 {
+                        속성 : 값;
+                        속성 : 값;
+                    }       
+                    
+                    선택자 : 태그의 구분자
+                           id / class
+                           --   -----
+                           => id : 1개만 설정
+                               <a href="" id="a">
+                           => class : 여러개 설정
+                               < a href="" class="a b c"> -> 클래스 어여러개=> 공백
+                                 | 관련된 모든 태그 적용 (동일한 클래스)
+                           | 한개만 처리(중복 불가) 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img {
+  width: 100px;
+  height: 200px;
+}
+#aaa{
+  width: 150px;
+ height: 250px;
+}
+</style>
+</head>
+<body>
+   <img src="mm1.jpg">
+   <img src="mm2.jpg">
+   <img src="mm3.jpg" id="aaa">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
