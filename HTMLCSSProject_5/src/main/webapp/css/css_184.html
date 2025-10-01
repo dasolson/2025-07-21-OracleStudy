@@ -1,0 +1,158 @@
+<!-- 
+           글자 속성
+         *** = color           : 글자 색상
+         *** = font-size       : 글자 크기
+             = font-weight     : 글자 두께 (normal , bold , 100~900)
+             = font-style      : 기울임체
+         *** = font-family     : 글꼴
+             --------------------------------------------------
+         *** = text-align      : 정렬 (left , center , right)
+         *** = text-decoration : underline
+             = text-transform  : 대소문자 변환
+             = letter-spacing  : 글자 간격 
+             = word-spacing    : 단어 간격
+         *** = line-height     : 줄 간격 (자간)
+         *** = white-space    : 공백 처리 방식 => 자동 줄 바꿈(***)
+             = text-shadow     : 그림자 효과
+         *** = font            : 단축 속성
+           
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css?family=Poor+Story:400" rel="stylesheet">
+<style type="text/css">
+body {
+   font-family: Arial , sans-serif;
+   margin: 20px;
+}
+h2 {
+   margin-top: 40px;
+   border-bottom: 2px solid #333;
+   padding-bottom: 5px;
+}
+.exam {
+   margin: 10px 0;
+   padding: 5px;
+   border-left: 4px solid #888;  
+}
+</style>
+</head>
+<body>
+   <h1>글자 속성 정리</h1>
+   <h2>🎉1. color : 글자 색상</h2>
+   <p class="exam" style="color:red;">빨간 글자</p>
+   <p class="exam" style="color: #0000ff;">파랑 글자</p>
+   <p class="exam" style="color: rgb(0,255,0);">초록 글자</p>
+   <h2>🎉2. font-size: 글자 크기</h2>
+   <!-- 
+         px / em / %
+         px : 14px(기본)
+         em : 2em => px*2 =>28
+         %  : 200%
+    -->
+    <p class="exam" style="font-size: 12px;">12px</p>
+    <p class="exam" style="font-size: 20px;">20px</p>
+    <p class="exam" style="font-size: 2em;">2em</p>
+    <p class="exam" style="font-size: 150%;">150%</p>
+    
+    <h2>🎉3. font-family: 글꼴</h2>
+    <p class="exam" style="font-family: 궁서체;">궁서체</p>
+    <p class="exam" style="font-family: 맑은 고딕;">맑은 고딕</p>
+    <p class="exam" style="font-family: Poor Story;">구글 폰트</p>
+    
+    <h2>4. font-style</h2>
+    <p class="exam" style="font-style: normal;">normal</p>
+    <p class="exam" style="font-style: Italic;">Italic</p>
+    <p class="exam" style="font-style: Oblique;">Oblique</p>
+    
+    <h2>5. font-weight: bold</h2>
+    <p class="exam" style="font-weight: normal;">보통</p>
+    <p class="exam" style="font-weight: bold;">굵은 글자</p>
+    <p class="exam" style="font-weight: lighter;">얇은 글자</p>
+    <p class="exam" style="font-weight: 900;">아주 굵은 글자</p>
+    
+    <h2>🎉🎉🎉6. text-align</h2>
+    <p class="exam" style="text-align: left;">왼쪽 정렬</p>
+    <p class="exam" style="text-align: center;">가운데 정렬</p>
+    <p class="exam" style="text-align: right;">오른쪽 정렬</p>
+    <p class="exam" style="text-align: justif;">양쪽 정렬</p>
+    <!-- 
+           같은 크기의 문자 => center : 이름 / 작성일 ...
+           다른 크기의 문자 => left   : 제목 ...
+           숫자          => right  : 조회수 / 번호 ...           
+     -->
+     
+     <h2>7. text-decoration: none / underline(&lt;a&gt;)</h2>
+     <p class="exam" style="text-decoration: none;">없음</p>
+    <p class="exam" style="text-decoration: underline;">밑줄</p>
+    <p class="exam" style="text-decoration: overline;">윗줄</p>
+    <p class="exam" style="text-decoration: line-through;">취소선</p>
+    
+    <h2>8. text-transform</h2>
+    <p class="exam" style="text-transform: uppercase;">uppercase => 대문자</p>
+    <p class="exam" style="text-transform: lowercase;">LOWERCASE => 소문자</p>
+    <p class="exam" style="text-transform: capitalize;">hello CSS</p>
+    
+    <h2>9. letter-spacing & word-spacing: 글자 간격 / 단어 간격</h2>
+    <p class="exam" style="letter-spacing: 5px;">글자 간격 5px</p>
+    <p class="exam" style="letter-spacing: -2px;">글자 간격 -2px</p>
+    <p class="exam" style="word-spacing: 20px;">글자 간격 20px</p>
+    
+    <h2>🎉10. line-height</h2>
+    <p class="exam" style="line-height: 0.8;">줄 간격 0.8(좁다)</p>
+    <p class="exam" style="line-height: 1.5;">줄 간격 1.5(기본)</p>
+    <p class="exam" style="line-height: 2;">줄 간격 2(넓다)</p>
+    
+    <h2>11. text-indent: 들여쓰기</h2>
+    <p class="exam" style="text-indent: 30px;">
+       Hello CSS<br>
+       CSS text-indent 적용
+    </p>
+    
+    <h2>🎉🎉🎉12. white-space</h2>
+    <p class="exam" style="white-space: normal;">
+        normal : 여러 공백은 하나로, 줄바꿈 자동 적용
+    </p>
+    <p class="exam" style="white-space: nowrap;">
+        ***nowrap : 줄바꿈 없다
+    </p>
+    <p class="exam" style="white-space: pre-wrap;">
+        ***pre-wrap : 강제 줄바꿈 &lt;pre&gt;
+    </p>
+    <p class="exam" style="white-space: pre-line;">
+        pre-line : 줄바꿈 유지 
+    </p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

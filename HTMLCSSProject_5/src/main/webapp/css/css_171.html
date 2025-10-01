@@ -1,0 +1,33 @@
+<!-- none -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+// 변수 설정 (ES 6) => 자유
+let i = 0;
+$(function() {
+	$('#del').click(function() {
+		if(i == 0){
+			$('div').show("slow");
+			$('#del').text("취소");
+			i = 1;
+		}else {
+			$('div').hide("slow");
+			$('#del').text("삭제");
+			i = 0;
+		}
+	})
+})
+</script>
+</head>
+<body>
+   <button id="del">삭제</button>
+   <div style="display: none">
+      비밀번호 : <input type=password size=10>
+      <input type=button value="삭제">
+   </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!-- 
+       CSS 속성
+         1) 박스속성
+            margin
+              = margin-top
+              = margin-right
+              = margin-bottom
+              = margin-left
+              = margin: top right bottom left
+              = margin: 0px auto
+              = 태그와 태그 사이의 간격 설정
+              = margin-left / margin-top
+                  좌우여백	       위아래 여백
+                                => 구분
+                   => 대댓글 / 여러개 버튼 
+            padding
+              = padding-top
+              = padding-right
+              = padding-bottom
+              = padding-left
+              = padding: top right bottom left
+              = 태그 안에 글자 / 이미지 여백
+            border
+              = border-width
+              = border-style : solid / dotted / dashed 
+              = border-color
+                ------------ 시스템 색상 : red , yellow, green...
+                                        RGB(255,255,255)
+                                        RGBA(255,255,255,0.1~1.0) : 투명
+                                        #ffffff
+              = border-left / border-right
+                border-top  / border-bottom
+              = 테두리 설정                            
+            width / height => 크기 결정
+         2) 가시 속성
+              = display
+                 = HTML에서 사용하는 태그
+                   -----------------
+                    - block : 브라우저의 한줄 전체를 차지 (세로 출력)
+                        <h1> ~ <h6> , <br> , <p>
+                        목록 (<ul> , <ol> , <dl> , <table>)
+                        분할 (<div>)
+                    -  inline : 자동으로 해당 크기만큼만 처리 (가로 출력)
+                        <img> , <a>
+                        글자 (<b> , <strong> , <font> , <sup>...)
+                        분할, 특정 부분에만 CSS 처리 : <span>
+                        <input> , <select> , <textarea>
+                 = 속성 변경
+                    display: block
+                    display: inline
+                    display: inline-block => width / height를 결정
+                             메뉴 제작 (li => 크기 결정)       
+                    display: none => 태그를 감출때 사용 
+                 = 형식
+                    <table> => display:table
+                    <tr> = display: table-row
+                    <th> = display: table-column
+                    <td> = display-cell
+                    <caption> = display: table-caption 
+                 = 기타 속성
+                    float : left / right => 레이아웃
+                    overflow : 범위를 벗어나는 경우
+                    --------- hidden / scroll
+                     | overflow-x / overflow-y            
+         3) 배경 속성
+              = background-color : 배경 색상
+              = background-image : 이미지 => url('경로명/URL')
+              = background-size  : 이미지 크기
+                                   cover / contain / width / height
+              = background : color 지정 / 이미지 지정 / size 지정                                       
+         4) 글자 속성 : font- , text-
+              = font-family : 글꼴
+                               - 시스템 내장
+                               - 구글 폰트 => <link> , @import()
+              = fomt-size : 글자 크기
+                               - % , px , em(배수) 
+              = font-weight : 강조 (bold)
+              = color : 글자 색상
+              = text-align : 정렬 => left / center / right
+              = vertical-align : 정렬 => top / middle / bottom
+              = white-space : 자동 줄 바꿈
+                 ** HTML의 특성 => 자동으로 크기가 늘어난다
+              = word-space : 글자 간격
+              = line-height : 자간 (줄 간격)                                            
+         5) 위치 속성
+              = 화면 배치
+              = float : 출력 위치 설정 (left / right)
+              = z-index : 레이아웃
+              = clear : float 해제 
+              = position 
+                 = absolute : 절대 좌표 (브라우저 기준)
+                 = relative : 상대 태그 기준
+                 = fixed    : 고정 좌표
+                     => 메뉴 , 퀵메뉴 , 이미지 배치...
+                 = static   : HTML 코딩 순서대로 배치 (기본)
+                 
+                     -------------------------------
+                                  top
+                        -----------------------
+                      left                    right  
+                        -----------------------
+                                 bottom
+                     -------------------------------
+         6) 유동 속성 : float / z-index
+         
+         *** CSS 암기 x => 값 설정 
+         *** 소스 (자바 / HTML / 오라클 / JavaScript)
+              => 순서     
+             
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* flex / grid */
+img {
+   width: 150px;
+   height: 200px;
+   display: block;
+   margin-top: 10px;
+}
+div {
+   width: 130px;
+   height: 30px;
+   background-color: black;
+   color: white;
+   display: inline-block; /* width / hwight 를 설정*/
+}
+</style>
+</head>
+<body>
+   <h1>display: 가시성</h1>
+   <div>Hello CSS1</div><!-- block -->
+   <div>Hello CSS2</div>
+   <div>Hello CSS3</div>
+   <p>
+   <img src="mm1.jpg">
+   <img src="mm2.jpg">
+   <img src="mm3.jpg">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

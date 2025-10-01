@@ -1,0 +1,196 @@
+<!-- 가시 속성 총정리 
+      overflow : hidden => 글자 길이가 지정된 크기보다 큰 경우
+      overflow : auto   
+      -----------------
+      display : none
+      display : inline-block
+      display : block / inline
+      ------------------------
+      z-index : 실시간 상담창 / 실시간 채팅 ...
+                이미지 슬라이싱 => codepen.io
+      -----------------------------------
+      
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function() { //window.onload=function(){} / main()
+	// vuejs : mounted() / React : componentDidMount() / effect()
+	// jsp : _jspInit() => _jspService()
+	// servlet : init() => service()
+	$('.hidden').click(function() {
+		alert("클릭된다!!")
+	})
+	$('.opacity0').click(function() {
+		alert("클릭된다!!")
+	})
+})
+</script>
+<style type="text/css">
+body {
+   font-family: Arial,sens-serif;
+   margin: 20px;
+}
+h2 {
+   margin-top: 40px;
+   border-bottom: 2px solid #333;
+   padding-bottom: 5px; 
+}
+.container {
+   margin: 15px 0;
+   border: 2px dashed gray;
+   padding: 10px;
+   width: 400px;
+   min-height: 80px;
+}
+.box {
+   display: inline-block;
+   width: 100px;
+   height: 50px;
+   margin: 5px;
+   line-height: 50px;
+   text-align: center;
+   color: white;
+   font-weight: bold;
+   border-radius: 8px;
+}
+.red {
+   background: red;
+}
+.green {
+   background: green;
+}
+.blue {
+   background: blue;
+}
+.none {
+   display: none;
+}
+.hidden {
+   visibility: hidden;
+}
+.opacity0 {
+   opacity: 0.1;
+}
+.obox {
+   width: 180px;
+   height: 100px;
+   border: 2px solid black;
+   margin: 10px;
+   padding: 5px;
+   background: #f0f0f0;
+}
+.visible {
+   overflow: visible;
+}
+.ohidden {
+   overflow: hidden;
+}
+.auto {
+   overflow: auto;
+}
+.scroll {
+   overflow: scroll;
+}
+.z-container {
+   position: relative;
+   width: 200px;
+   height: 200px;
+   border: 2px solid black;
+   margin: 10px;
+}
+.z-box {
+   width: 120px;
+   height: 120px;
+   position: absolute;
+   top: 40px; left: 40px;
+   opacity: 0.8;
+}
+.red-z {background-color: red;z-index: 10;}
+.green-z {background-color: green; top: 60px; left: 60px; z-index: 5;}
+.blue-z {background-color: blue; top: 80px; left: 80px; z-index: 1;}
+</style>
+</head>
+<body>
+   <h1>CSS 가시 속성 총정리 예제</h1>
+   <h2>1. display:none</h2>
+   <div class="container">
+      <div class="box red">A</div>
+      <div class="box green none">B</div>
+      <div class="box blue">C</div>
+   </div>
+   <p>B박스는 <b>완전 사라진다, 공간도 없어 진다</b></p>
+   
+   <h2>2. visibility:hidden</h2>
+   <div class="container">
+      <div class="box red">A</div>
+      <div class="box green hidden">B</div>
+      <div class="box blue">C</div>
+   </div>
+   <p>B박스는 <b>보이지는 안는다, 공간이 남아있다</b></p>
+   
+   <h2>3. opacity:0.0</h2>
+   <div class="container">
+      <div class="box red">A</div>
+      <div class="box green opacity0">B</div>
+      <div class="box blue">C</div>
+   </div>
+   <p>B박스는 <b>투명한 공간이 남아있다, 이벤트 가능</b></p>
+   
+   <h2>4. overflow</h2>
+   <div class="container">
+      <div class="obox visible">
+         <b>overflow:visible</b><br>
+         빚을 제때 열심히 갚아온 성실상환자들의 "결국 빚 안 갚은 사람이 더 이익을 본 것"이라는 논란이 확산되는
+      </div>
+      <div class="obox ohidden">
+         <b>overflow:hidden</b><br>
+         빚을 제때 열심히 갚아온 성실상환자들의 "결국 빚 안 갚은 사람이 더 이익을 본 것"이라는 논란이 확산되는
+      </div>
+      <div class="obox scroll">
+         <b>overflow:scroll</b><br>
+         빚을 제때 열심히 갚아온 성실상환자들의 "결국 빚 안 갚은 사람이 더 이익을 본 것"이라는 논란이 확산되는
+      </div>
+      <div class="obox auto">
+         <b>overflow:auto</b><br>
+         빚을 제때 열심히 갚아온 성실상환자들의 "결국 빚 안 갚은 사람이 더 이익을 본 것"이라는 논란이 확산되는
+      </div>
+   </div>  
+   
+   <h2>5. z-index</h2>
+   <div class="z-container">
+      <div class="z-box red-z"></div>
+      <div class="z-box green-z"></div>
+      <div class="z-box blue-z"></div>
+   </div>
+   <p>red > green > blue:z-index는 값이 클 수록 위</p> 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

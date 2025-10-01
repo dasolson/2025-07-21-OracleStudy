@@ -1,0 +1,57 @@
+<!-- 
+        overflow : 설정된 크기를 벗어나는 경우 
+          = visible : 그냥 다 보여준다
+          = hidden  : 넘치는 경우 잘라 버린다
+          = scroll  : 넘치는 경우 스크롤 생성
+          = auto    : 넘치는 경우 / 넘치지 않는 경우
+                      --------   ------------
+                      스크롤 생성    스크롤 생성 x
+        
+                                보여주는 기능        공간 차지        특징
+        display:none                x               x          완전 제거    
+        visibility:hidden           x               o          공간 => 이벤트 처리 가능
+        opacity                     x               o          공간 => 이벤트 처리 가능
+        overflow:hidden          내용 잘림            o          스크롤 생성 x
+                      
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.container {
+   width: 150px;
+   height: 80px;
+   border: 2px solid black;
+   margin: 10px;
+}
+.visible {
+   overflow: visible;
+}
+.hidden {
+   overflow: hidden;
+}
+.scroll {
+   overflow: scroll;
+}
+.auto {
+   overflow: auto;
+}
+p {
+   width: 100px;
+   height: 30px;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+}
+</style>
+</head>
+<body>
+   <div class="container visible">그냥 다 보여준다, 넘쳐도 다 보여준다 그냥 다 보여준다, 넘쳐도 다 보여준다</div>
+   <div class="container hidden">넘치는 경우 잘라 버린다, 보이지 않는다 넘치는 경우 잘라 버린다, 보이지 않는다</div>
+   <div class="container scroll">넘치는 경우 스크롤 생성, 스크롤이 항상생성</div>
+   <div class="container auto">넘치는 경우 스크롤 생성 / 넘치지 않는 경우 스크롤 없다</div>
+   <p>Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello </p>
+</body>
+</html>
