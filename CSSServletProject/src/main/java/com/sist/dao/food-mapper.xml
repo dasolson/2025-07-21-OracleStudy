@@ -12,6 +12,7 @@
                => 컬럼명과 VO의 변수가 다른 경우 
                  ex) 
                      <result column="name" property="nickname">
+                     <result column="irum" property="name">
                      
                      String name;
                      
