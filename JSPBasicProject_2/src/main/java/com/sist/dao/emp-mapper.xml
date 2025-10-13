@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.emp-mapper">
+<!-- PreparedStatment / ResultSet -->
+<!-- 
+     while(rs.next()){
+        EmpVO vo = new EmpVO();
+        vo.setEmpno(rs.getInt(1))
+        ...
+        ...
+     }
+     
+     SELECT  COUNT(*) FROM emp => int
+     SELECT pwd FROM member => String
+     
+     SELECT ...
+     FROM table_name
+     WHERE no=?  => int parameterType="int"
+                         => setInt()
+ -->
+<select id="empListData" resultType="empVO">
+   SELECT empno, ename, job, To_CHAR(hiredate,'YYYY-MM-DD') as dbday, sal
+   FROM emp
+</select>
+<select id="empDetailData" resultType="empVO" parameterType="int">
+   SELECT empno, ename, job, sal, mgr, comm, deptno, To_CHAR(hiredate,'YYYY-MM-DD HH24:MI:SS DY') as dbday
+   FROM emp
+   WHERE empno=#{empno}
+</select>
+</mapper>
