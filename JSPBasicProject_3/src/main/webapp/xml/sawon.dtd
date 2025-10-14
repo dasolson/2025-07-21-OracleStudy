@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    <sawon>
+       <list>
+          <sabun></sabun>
+          <name></name>
+          <dept></dept>
+          <phone></phone>
+          <address></address>
+       </list>
+       <list>
+          <sabun></sabun>
+          <name></name>
+          <dept></dept>
+          <tel></tel>
+          <address></address>
+       </list>
+    </sawon>
+ -->
+ <!ELEMENT sawon (list+)>
+ <!ELEMENT list (sabun, name, dept, (phone|tel),address)>
+ <!ELEMENT sabun (#PCDATA)>
+ <!ELEMENT name (#PCDATA)>
+ <!ELEMENT dept (#PCDATA)>
+ <!ELEMENT phone (#PCDATA)>
+ <!ELEMENT tel (#PCDATA)>
+ <!ELEMENT address (#PCDATA)>
+ <!ENTITY nbsp " "> <!-- &nbsp; -->
+ <!ENTITY lt "<">
+ <!ENTITY gt ">">
+ <!ENTITY sawon "sawon.xml">

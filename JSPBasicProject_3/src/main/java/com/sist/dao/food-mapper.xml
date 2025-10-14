@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.food-mapper">
+ <!-- 
+     공통  = 한개만 설정이 가능
+     한개  = 해당 데이터형
+     여러개 = ~VO
+            HashMap
+      resultType    : SQL 실행 결과값
+      parameterType : ?에 값을 채운다
+  -->
+   <select id="foodListData" resultType="FoodVO" parameterType="hashmap">
+      SELECT /*+ INDEX_ASC(menupan_food menuf_fno_pk) */fno, poster, name, address, type
+      FROM menupan_food
+      WHERE type LIKE '%'||#{type}||'%'
+      OFFSET #{start} ROWS FETCH NEXT 20 ROWS ONLY
+      <!-- map.get(strat) -->
+   </select>
+   <select id="foodTotalPage" resultType="int" parameterType="String">
+      SELECT CEIL(COUNT(*)/20.0)
+      FROM menupan_food
+      WHERE type LIKE '%'||#{type}||'%'
+   </select>
+<!--    <select id="foodTestData" resultType="FoodVO" parameterType="int">
+      SELECT * FROM menupan_food
+      WHERE fno &lt; 100
+   </select> -->
+   <select id="foodDetailData" resultType="FoodVO" parameterType="int">
+      SELECT * FROM menupan_food
+      WHERE fno=#{fno}
+   </select>
+</mapper>

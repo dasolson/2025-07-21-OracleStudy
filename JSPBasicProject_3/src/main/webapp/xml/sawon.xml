@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sawon SYSTEM "sawon.dtd">
+<sawon>
+   <list>
+      <sabun></sabun>
+      <name></name>
+      <dept></dept>
+      <phone></phone>
+      <address></address>
+   </list>
+   <list>
+      <sabun></sabun>
+      <name></name>
+      <dept></dept>
+      <tel></tel>
+      <address></address>
+   </list>
+</sawon>
