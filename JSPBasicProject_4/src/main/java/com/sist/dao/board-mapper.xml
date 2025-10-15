@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.dao.board-mapper">
+   <!-- 목록 : 페이지 (Read)-->
+   <!-- 
+        모든 태그는 한개 SQL만 저장 가능
+    -->
+   <select id="boardListData" resultType="BoardVO" parameterType="hashmap">
+      SELECT no, subject, name, TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, num
+      FROM (SELECT no, subject, name, regdate, hit, rownum as num
+      FROM (SELECT no, subject, name, regdate, hit
+      FROM jspBoard ORDER BY no DESC))
+      WHERE num BETWEEN #{start} AND #{end}      
+   </select>
+   <select id="boardTotalPage" resultType="int">
+      SELECT CEIL(COUNT(*)/10.0) FROM jspBoard
+   </select>
+   <!-- 글쓰기 : sequence (Create)-->
+   <insert id="boardInsert" parameterType="BoardVO">
+      <selectKey keyProperty="no" resultType="int" order="BEFORE">
+         SELECT NVL(MAX(no)+1,1) as no FROM jspBoard   
+      </selectKey>
+      INSERT INTO jspBoard(no, name, subject, content, pwd)
+      VALUES(#{no}, #{name}, #{subject}, #{content}, #{pwd})
+      <!-- 
+           #{name}
+              = parameterType="BoardVO"
+                  vo.getName()
+              parameterType="hashmap"
+                  map.get("name")
+       -->
+   </insert>
+   <!-- 상세보기 : hit 증가 -->
+   <update id="hitIncrement" parameterType="int">
+      UPDATE jspBoard SET
+      hit=hit+1
+      WHERE no=#{no}
+   </update>
+   <select id="boardDetailData" resultType="BoardVO" parameterType="int">
+      SELECT no, name, subject, content, hit, TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday
+      FROM jspBoard
+      WHERE no=#{no}
+   </select>
+   <!-- 수정하기 : 데이터 읽기 / 실제 수정 (Update)-->
+   <select id="boardGetPassword" resultType="String" parameterType="int">
+      SELECT pwd FROM jspBoard
+      WHERE no=#{no}
+   </select>
+   <select id="boardUpdateData" resultType="BoardVO" parameterType="int">
+      SELECT no, name, subject, content
+      FROM jspBoard
+      WHERE no=#{no}
+   </select>
+   <!-- 삭제 : 비번 (Delete)-->
+</mapper>
