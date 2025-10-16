@@ -51,5 +51,15 @@
       FROM jspBoard
       WHERE no=#{no}
    </select>
+   <!-- 실제 업데이트 -->
+   <update id="boardUpdate" parameterType="BoardVO">
+      UPDATE jspBoard SET
+      name=#{name}, subject=#{subject}, content=#{content}
+      WHERE no=#{no}
+   </update>
    <!-- 삭제 : 비번 (Delete)-->
+   <delete id="boardDelete" parameterType="int">
+      DELETE FROM jspBoard
+      WHERE no=#{no}
+   </delete>
 </mapper>

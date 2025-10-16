@@ -35,6 +35,7 @@ h1 {
                <th width="15%">이름</th>
                <td width="85%">
                   <input type="text" name="name" size="20" class="input-sm" required value="<%=vo.getName()%>">
+                  <input type="hidden" name="no" value="<%=vo.getNo()%>">
                </td>
             </tr>
             <tr>

@@ -88,6 +88,7 @@
     <!-- Mapper 등록 -->
     <mappers>
        <mapper resource="com/sist/dao/board-mapper.xml"/>
+       <mapper resource="com/sist/dao/emp-mapper.xml"/>
     </mappers>
  </configuration>
  
