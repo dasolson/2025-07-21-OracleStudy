@@ -90,6 +90,6 @@ public class GenieMusicJsoup {
    }
    public static void main(String[] args) {
 	    GenieMusicJsoup gm=new GenieMusicJsoup();
-	    //gm.genieDataCollection();
+	    gm.genieDataCollection();
    }
 }
