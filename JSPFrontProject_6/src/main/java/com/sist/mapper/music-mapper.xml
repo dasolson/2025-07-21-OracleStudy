@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.music-mapper">
+   <select id="musicMainData" resultType="com.sist.vo.MusicVO" parameterType="int">
+      SELECT no, poster, title, rownum
+      FROM (SELECT no, poster, title
+      FROM genie_music WHERE cno=#{cno} ORDER BY no ASC)
+      WHERE rownum&lt;=4
+   </select>
+</mapper>
