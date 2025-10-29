@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.food-mapper">
+  <select id="foodListData" resultType="FoodVO" parameterType="hashmap">
+   <!-- 
+      resultType  : 리턴형 => 결과값을 담는 변수 
+        = FoodVO 
+        = List = selectList
+          while(rs.next())
+          {
+             FoodVO vo=new FoodVO();
+             vo.setNo(1)
+          }
+        = FoodVO = selectOne
+             FoodVO vo=new FoodVO();
+             vo.setNo(1)
+      parameterType : 매개변수 => ?에 값을 채우는 경우 
+                               =================
+                               #{키,변수명} = 일반변수 
+                                   => 문자열 : ''
+                                   '홍길동'
+                               ${키,변수명}
+                                   => 문자열 : ''(x)
+                                   홍길동 : 테이블명 / 컬럼명
+                                   다중 검색시에 주로 사용 
+      
+    -->
+    SELECT fno,name,poster,num 
+    FROM (SELECT fno,name,poster,rownum as num
+    FROM (SELECT fno,name,poster 
+    FROM menupan_food ORDER BY fno))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+    <!-- 
+        #{start} start=map의 키명 => map.get("start")
+        {} = get() , getName() , getAttribute()
+     -->
+  <!-- 총페이지 -->
+  <select id="foodTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/12.0) 
+    FROM menupan_food
+  </select>
+  <!-- 상세보기 : 조회수 증가 -->
+  <update id="hitIncrement" parameterType="int">
+   UPDATE menupan_food SET
+   hit=hit+1
+   WHERE fno=#{fno}
+  </update>
+  <select id="foodDetailData" resultType="FoodVO" 
+  parameterType="int">
+   SELECT * FROM menupan_food
+   WHERE fno=#{fno}
+  </select>
+  
+  <!-- 음식 종류별  -->
+  <select id="foodTypeListData" resultType="FoodVO"
+   parameterType="hashmap"
+  >
+    SELECT fno,name,poster,type
+    FROM menupan_food
+    WHERE type LIKE '%'||#{type}||'%'
+    ORDER BY fno ASC
+    OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY
+    <!-- 
+       MySQL : LIMIT start,12
+       Oracle : Inline View
+     -->
+  </select>
+  <!-- 
+        name
+        subject
+        content
+        
+        name+subject
+        name+content
+        name+subject+content
+        subject+content
+   -->
+  <select id="foodTypeTotalPage" resultType="int"
+   parameterType="string" 
+  >
+    SELECT CEIL(COUNT(*)/12.0)
+    FROM menupan_food
+    WHERE type LIKE '%'||#{type}||'%'
+    
+    <!-- 
+         MySQL : WHERE type LIKE CONCAT('%',#{type},'%')
+         NVL = IFNULL , TO_CHAR = DATE_FORMAT
+     -->
+  </select>
+  <select id="foodFindListData" resultType="FoodVO"
+    parameterType="hashmap"
+  >
+    SELECT fno,name,poster,address
+    FROM menupan_food
+    WHERE ${column} LIKE '%'||#{ss}||'%'
+    <!-- 
+      WHERE 'address' LIKE ~
+      $ = table , column 
+     -->
+  </select>
+  
+  <!-- Ajax -->
+  <select id="foodAjaxListData" resultType="FoodVO"
+   parameterType="string"
+  >
+    SELECT fno,name,poster,type,rownum
+    FROM menupan_food
+    WHERE type LIKE '%'||#{type}||'%' AND rownum&lt;=12
+    ORDER BY fno ASC
+  </select>
+</mapper>
+
+
+

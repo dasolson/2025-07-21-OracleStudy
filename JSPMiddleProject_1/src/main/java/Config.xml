@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="db.properties"/>
+  <!-- 
+      getConnection() / disConnection()
+   -->
+  <typeAliases>
+    <typeAlias type="com.sist.vo.FoodVO" alias="FoodVO"/>
+    <typeAlias type="com.sist.vo.MusicVO" alias="MusicVO"/>
+    <typeAlias type="com.sist.vo.ReplyBoardVO" alias="ReplyBoardVO"/>
+  </typeAliases>
+  <environments default="develpoment">
+    <environment id="develpoment">
+      <transactionManager type="JDBC"/><!-- AutoCommit/AutoRollback -->
+      <dataSource type="POOLED"><!-- Connection을 미리 생성 기본:8 -->
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/sist/mapper/music-mapper.xml"/>
+    <mapper resource="com/sist/mapper/food-mapper.xml"/>
+    <mapper resource="com/sist/mapper/replyboard-mapper.xml"/>
+  </mappers>
+</configuration>
