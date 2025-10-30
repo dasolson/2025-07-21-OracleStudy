@@ -1,0 +1,52 @@
+cd C:\oracleDev\oracleStudy\JSPMiddleProject
+
+git init
+
+git add .
+
+git commit -m "first"
+
+git branch -M main
+
+git remote add origin https://github.com/dasolson/JSPMiddleProject.git
+
+git push -u origin main
+
+
+
+
+
+git checkout main
+
+git pull origin main
+
+git checkout -b backup/2025-10-30
+
+git push origin backup/2025-10-30
+
+
+
+
+
+
+
+강제 
+git push -u origin main --force
+
+
+
+
+
+git status
+
+git checkout main
+
+git add .
+
+git commit -m "second"
+
+git push -u origin main
+
+
+
+ 
