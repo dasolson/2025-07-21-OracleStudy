@@ -125,4 +125,114 @@ public class ReplyBoardDAO {
 	   session.close();
 	   return vo;
    }
+   /*
+    * <update id="boardUpdate" parameterType="ReplyBoardVO">
+	       UPDATE replyboard SET
+	       name=#{name}, subject=#{subject}, content=#{content}
+	       WHERE no=#{no}
+	    </update>
+    */
+   public static String boardUpdate(ReplyBoardVO vo) {
+	   String res = "no";
+	   SqlSession session = ssf.openSession();
+	   String db_pwd = session.selectOne("boardGetPassword", vo.getNo());
+	   if(db_pwd.equals(vo.getPwd())) {
+		   res = "yes";
+		   session.update("boardUpdate", vo);
+		   session.commit();
+	   }
+	   session.close();
+	   return res;
+   }
+   /*
+    * <select id="boardParentInfoData" resultType="ReplyBoardVO" parameterType="int">
+	       SELECT group_id, group_step, group_tab
+	       FROM replyboard
+	       WHERE no=#{no}
+	    </select>
+	    <!-- 
+	          Update 설정  gi DESC, gs ASC
+	                          gi  gs  gt
+	            AAAAA          1   0   0
+	             =>BBBBB       1   1   1
+	                => CCC     1   2   2
+	             DDDDD         1   1   1   
+	     -->
+	     <update id="boardGroupStepIncrement" parameterType="ReplyBoardVO">
+	        UPDATE replyboard SET
+	        group_step=group_step+1
+	        WHERE group_id=#{group_id} AND group_step>#{group_step}
+	     </update>
+	    <!-- 
+	          Insert
+	     --> 
+	     <insert id="boardReplyInsert" parameterType="ReplyBoardVO">
+	        INSERT INTO replyboard(no, name, subject, content, pwd, group_id, group_step, group_tab, root, depth)
+	        VALUES(rb_no_seq.nextval, #{name}, #{subject}, #{content}, #{pwd}, #{group_id}, #{group_step}, #{group_tab}, #{root}, 0)
+	     </insert>
+	    <!-- 
+	          Update  
+	     --> 
+	     <update id="boardDepthIncrement" parameterType="int">
+	        UPDATE replyboard SET
+	        depth=depth+1
+	        WHERE no=#{no}
+	     </update>
+    */
+   // 트랜젝션 프로그램 = 일괄처리
+   public static void boardReplyInsert(int pno, ReplyBoardVO vo) {
+	   SqlSession session = ssf.openSession();
+	   // 1. 상위 게시물 받기
+	   ReplyBoardVO pvo = session.selectOne("boardParentInfoData", pno);
+	   // 2. update
+	   session.update("boardGroupStepIncrement", pvo);
+	   // 3. insert
+	   vo.setGroup_id(pvo.getGroup_id());
+	   vo.setGroup_step(pvo.getGroup_step()+1);
+	   vo.setGroup_tab(pvo.getGroup_tab()+1);
+	   vo.setRoot(pno);
+	   session.insert("boardReplyInsert",vo);
+	   session.update("boardDepthIncrement",pno);
+	   session.commit();
+	   session.close();
+   }
+   /*
+    * <select id="boardDeleteInfoData" resultType="ReplyBoardVO" parameterType="int">
+       SELECT pwd, depth, root
+	       FROM replyboard
+	       WHERE no=#{no}
+	    </select>
+	    <update id="boardSCData" parameterType="int">
+	       UPDATE replyboard SET
+	       subject='관리자가 삭제한 게시물입니다', content='관리자가 삭제한 게시물입니다'
+	       WHERE no=#{no}
+	    </update>
+	    <delete id="boardDelete" parameterType="int">
+	       DELETE FROM replyboard
+	       WHERE no=#{no}
+	    </delete>
+	    <update id="boardDepthDecrement" parameterType="int">
+	       UPDATE replyboard SET
+	       depth=depth-1
+	       WHERE no=#{no}
+	    </update>
+    */
+   public static String boardDelete(int no, String pwd) {
+	   String res = "no";
+	   SqlSession session = ssf.openSession();
+	   ReplyBoardVO vo = session.selectOne("boardDeleteInfoData",no); 
+	   if(pwd.equals(vo.getPwd())) {
+		   res = "yes";
+		   if(vo.getDepth() == 0) {
+			   session.delete("boardDelete",no);
+		   }else {
+			   session.delete("boardSCData",no);
+			   //session.update("boardSCData",no);
+		   }
+		   session.update("boardDepthDecrement",vo.getRoot());
+	   }
+	   session.commit();
+	   session.close();
+	   return res;
+   }
 }

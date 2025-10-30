@@ -126,4 +126,28 @@ public class FoodModel {
 		  out.write(arr.toJSONString());
 	  }catch(Exception ex) {}
   }
+  @RequestMapping(value="food/food_vue.do")
+  public void food_vue_list(HttpServletRequest request,
+		  HttpServletResponse response) {
+	  String type = request.getParameter("type");
+	  if(type == null)
+		  type = "한식";
+	  List<FoodVO> list = FoodDAO.foodAjaxListData(type);
+	  //List => Array
+	  JSONArray arr = new JSONArray();
+	  // VO = Object
+	  for(FoodVO vo:list) {
+		  JSONObject obj = new JSONObject();
+		  obj.put("fno", vo.getFno());
+		  obj.put("poster", vo.getPoster());
+		  obj.put("name", vo.getName());
+		  arr.add(obj);
+	  }
+	  try {
+		  response.setContentType("text/plain;charset=UTF-8");
+		  PrintWriter out = response.getWriter();
+		  out.write(arr.toJSONString());
+	  }catch(Exception ex) {}
+	  
+  }
 }

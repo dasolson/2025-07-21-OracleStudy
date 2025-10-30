@@ -22,6 +22,7 @@
       <th width=15% class="text-center">이름</th>
       <td width=85%>
        <input type=text name=name size=20 class="input-sm" required>
+       <input type="hidden" name="pno" value="${no }">
       </td>
      </tr>
      <tr>

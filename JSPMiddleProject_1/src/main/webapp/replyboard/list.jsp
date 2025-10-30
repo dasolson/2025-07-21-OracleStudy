@@ -47,7 +47,12 @@
 	            </c:forEach>
 	            <img src="../replyboard/re_icon.png">
 	          </c:if>
+	          <c:if test="${msg != vo.subject }">
 	          <a href="../board/detail.do?no=${vo.no }">${vo.subject }</a>
+	          </c:if>	          
+	          <c:if test="${msg == vo.subject }">
+	          <span style="color: gray">${vo.subject }</span>
+	          </c:if>
 	          <%--
 	               ?no=10  = request.setAttribute("no",10)
 	               => getParameter("no") => 10

@@ -83,5 +83,64 @@
        WHERE no=#{no}
     </update>
     <!-- 답변하기 -->
+    <!--  1. 답변 대상의 group_id group_step group_tab -->
+    <!-- 
+                         gi     gs     gt 
+          AAAAAA          1      0      0
+            => BBBBBB     1      1      1
+               => ccccc   1      2      2
+     -->
+    <select id="boardParentInfoData" resultType="ReplyBoardVO" parameterType="int">
+       SELECT group_id, group_step, group_tab
+       FROM replyboard
+       WHERE no=#{no}
+    </select>
+    <!-- 
+          Update 설정  gi DESC, gs ASC
+                          gi  gs  gt
+            AAAAA          1   0   0
+             =>BBBBB       1   1   1
+                => CCC     1   2   2
+             DDDDD         1   1   1   
+     -->
+     <update id="boardGroupStepIncrement" parameterType="ReplyBoardVO">
+        UPDATE replyboard SET
+        group_step=group_step+1
+        WHERE group_id=#{group_id} AND group_step>#{group_step}
+     </update>
+    <!-- 
+          Insert
+     --> 
+     <insert id="boardReplyInsert" parameterType="ReplyBoardVO">
+        INSERT INTO replyboard(no, name, subject, content, pwd, group_id, group_step, group_tab, root, depth)
+        VALUES(rb_no_seq.nextval, #{name}, #{subject}, #{content}, #{pwd}, #{group_id}, #{group_step}, #{group_tab}, #{root}, 0)
+     </insert>
+    <!-- 
+          Update  
+     --> 
+     <update id="boardDepthIncrement" parameterType="int">
+        UPDATE replyboard SET
+        depth=depth+1
+        WHERE no=#{no}
+     </update>
     <!-- 삭제하기 --> 
+    <select id="boardDeleteInfoData" resultType="ReplyBoardVO" parameterType="int">
+       SELECT pwd, depth, root
+       FROM replyboard
+       WHERE no=#{no}
+    </select>
+    <update id="boardSCData" parameterType="int">
+       UPDATE replyboard SET
+       subject='관리자가 삭제한 게시물입니다', content='관리자가 삭제한 게시물입니다'
+       WHERE no=#{no}
+    </update>
+    <delete id="boardDelete" parameterType="int">
+       DELETE FROM replyboard
+       WHERE no=#{no}
+    </delete>
+    <update id="boardDepthDecrement" parameterType="int">
+       UPDATE replyboard SET
+       depth=depth-1
+       WHERE no=#{no}
+    </update>
 </mapper>
