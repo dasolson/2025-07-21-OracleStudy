@@ -81,4 +81,8 @@ git push -u origin main --force
    git push origin branch명
 7. pull 안될때
    git pull --rebase
+
+  git fetch --all
+  git reset --hard origin/main
+
  
