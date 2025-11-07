@@ -138,7 +138,7 @@
 
       
       
-      <Context docBase="JSPMiddleProject_1" path="/JSPMiddleProject_1" reloadable="true" source="org.eclipse.jst.jee.server:JSPMiddleProject_1"/><Context docBase="JSPLastProject" path="/JSPLastProject" reloadable="true" source="org.eclipse.jst.jee.server:JSPLastProject"/><Context docBase="AllCamp" path="/AllCampProject" reloadable="true" source="org.eclipse.jst.jee.server:AllCamp"/></Host>
+      <Context docBase="JSPMiddleProject_1" path="/JSPMiddleProject_1" reloadable="true" source="org.eclipse.jst.jee.server:JSPMiddleProject_1"/><Context docBase="AllCamp" path="/AllCampProject" reloadable="true" source="org.eclipse.jst.jee.server:AllCamp"/><Context docBase="JSPLastProject" path="/JSPLastProject" reloadable="true" source="org.eclipse.jst.jee.server:JSPLastProject"/></Host>
     </Engine>
   </Service>
 </Server>

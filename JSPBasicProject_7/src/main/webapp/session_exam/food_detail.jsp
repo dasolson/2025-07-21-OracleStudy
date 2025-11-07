@@ -2,13 +2,13 @@
     pageEncoding="UTF-8" import="com.sist.vo.*,com.sist.dao.*"%>
 <%@ page import="java.util.*" %>
 <%
-    // session에서 데이터 읽기
+// session에서 데이터 읽기
     String id=(String)session.getAttribute("id");
     //1. 사용자 보내준 데이터 받기 
     String fno=request.getParameter("fno");
     FoodVO vo=FoodDAO.foodDetailData(Integer.parseInt(fno));
     // 댓글 
-    List<ReplyVO> list = ReplyDAO.replyListData(Integer.parseInt(fno));
+    List<BoardReplyVO> list = ReplyDAO.replyListData(Integer.parseInt(fno));
 %>
 <!DOCTYPE html>
 <html>
@@ -37,45 +37,45 @@
      <table class="table">
       <tr>
        <td width=30% class="text-center" rowspan="9">
-        <img src="<%=vo.getPoster() %>" style="width: 240px;height: 350px">
+        <img src="<%=vo.getPoster()%>" style="width: 240px;height: 350px">
        </td>
        <td colspan="2">
-        <h3><%=vo.getName() %>&nbsp;
-         <span style="color:orange;"><%=vo.getScore() %></span></h3>
+        <h3><%=vo.getName()%>&nbsp;
+         <span style="color:orange;"><%=vo.getScore()%></span></h3>
        </td>
       </tr>
       <tr>
        <td width=20% style="color:gray">주소</td>
-       <td width=50%><%=vo.getAddress() %></td>
+       <td width=50%><%=vo.getAddress()%></td>
       </tr>
       <tr>
        <td width=20% style="color:gray">전화</td>
-       <td width=50%><%=vo.getPhone() %></td>
+       <td width=50%><%=vo.getPhone()%></td>
       </tr>
       <tr>
        <td width=20% style="color:gray">음식종류</td>
-       <td width=50%><%=vo.getType() %></td>
+       <td width=50%><%=vo.getType()%></td>
       </tr>
       <tr>
        <td width=20% style="color:gray">영업시간</td>
-       <td width=50%><%=vo.getTime() %></td>
+       <td width=50%><%=vo.getTime()%></td>
       </tr>
       <tr>
        <td width=20% style="color:gray">가격대</td>
-       <td width=50%><%=vo.getPrice() %></td>
+       <td width=50%><%=vo.getPrice()%></td>
       </tr>
       <tr>
        <td width=20% style="color:gray">주차</td>
-       <td width=50%><%=vo.getParking() %></td>
+       <td width=50%><%=vo.getParking()%></td>
       </tr>
       <tr>
        <td width=20% style="color:gray">테마</td>
-       <td width=50%><%=vo.getTheme() %></td>
+       <td width=50%><%=vo.getTheme()%></td>
       </tr>
      </table>
      <table class="table">
        <tr>
-        <td><%=vo.getContent() %></td>
+        <td><%=vo.getContent()%></td>
        </tr>
        <tr>
          <td class="text-right">
@@ -93,7 +93,7 @@
 	    <tr>
 	     <td>
 	        <%
-	           for(ReplyVO rvo:list){
+	        for(BoardReplyVO rvo:list){
 	        %>
 	        
 	         <table class="table">
